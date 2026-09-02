@@ -219,19 +219,19 @@ SKILLS = r"""
 \newcommand{\skillcolw}{\dimexpr\linewidth-2in\relax}
 \begin{tabular}{@{}ll@{}}
 \hline\\[4pt]
-\cellL{2in}{\textbf{\color{cvink}Python}} & \cellL{\skillcolw}{\color{cvmuted}Working with Python since 2013. Machine learning $\rightarrow$ Pytorch.} \\[8pt]\hline\\[4pt]
-\cellL{2in}{\textbf{\color{cvink}R}} & \cellL{\skillcolw}{\color{cvmuted}Working with R since 2018.} \\[8pt]\hline\\[4pt]
-\cellL{2in}{\textbf{\color{cvink}Other scripting languages}} & \cellL{\skillcolw}{\color{cvmuted}SQL, MATLAB, Java, XML, XSL, UNIX, Stata, Git.} \\[8pt]\hline\\[4pt]
-\cellL{2in}{\textbf{\color{cvink}Psychometric \& Statistical Software}} & \cellL{\skillcolw}{\color{cvmuted}FlexMIRT, MPlus.} \\[8pt]\hline\\[4pt]
+\cellL{2in}{\textbf{\color{cvink}Python}} & \cellL{\skillcolw}{\color{cvmuted}Working with Python since 2013. Machine learning $\rightarrow$ Pytorch.} \\[4pt]\hline\\[2pt]
+\cellL{2in}{\textbf{\color{cvink}R}} & \cellL{\skillcolw}{\color{cvmuted}Working with R since 2018.} \\[4pt]\hline\\[2pt]
+\cellL{2in}{\textbf{\color{cvink}Other scripting languages}} & \cellL{\skillcolw}{\color{cvmuted}SQL, MATLAB, Java, XML, XSL, UNIX, Stata, Git.} \\[4pt]\hline\\[2pt]
+\cellL{2in}{\textbf{\color{cvink}Psychometric \& Statistical Software}} & \cellL{\skillcolw}{\color{cvmuted}FlexMIRT, MPlus.} \\[4pt]\hline\\[2pt]
 \cellL{2in}{\textbf{\color{cvink}Optimization Software}} & \cellL{\skillcolw}{\color{cvmuted}Gurobi, Cplex.} \\[8pt]\hline
 \end{tabular}
 
-\vspace{16pt}
+\vspace{8pt}
 
 \noindent\begin{tabular}{@{}ll@{}}
 \hline\\[4pt]
-\cellL{2in}{\textbf{\color{cvink}English}} & \cellL{\skillcolw}{\color{cvmuted}Advanced reading level, Advanced oral level, Advanced writing level. TOEFL iBT score 102/120} \\[8pt]\hline\\[4pt]
-\cellL{2in}{\textbf{\color{cvink}French}} & \cellL{\skillcolw}{\color{cvmuted}Advanced reading level, Intermediate oral level, Intermediate writing level.} \\[8pt]\hline\\[4pt]
+\cellL{2in}{\textbf{\color{cvink}English}} & \cellL{\skillcolw}{\color{cvmuted}Advanced reading level, Advanced oral level, Advanced writing level. TOEFL iBT score 102/120} \\[4pt]\hline\\[2pt]
+\cellL{2in}{\textbf{\color{cvink}French}} & \cellL{\skillcolw}{\color{cvmuted}Advanced reading level, Intermediate oral level, Intermediate writing level.} \\[4pt]\hline\\[2pt]
 \cellL{2in}{\textbf{\color{cvink}Spanish}} & \cellL{\skillcolw}{\color{cvmuted}Native Language.} \\[8pt]\hline
 \end{tabular}
 """
@@ -274,7 +274,7 @@ PUB_HEADER = r"""
 \newcommand{\statscolw}{\dimexpr\linewidth-1.3in-2.1in\relax}
 \begin{tabular}{@{}lll@{}}
 \hline\\[4pt]
-\cellL{1.3in}{\textbf{\color{cvink}ResearchGate}} & \cellL{2.1in}{Profile: \link{https://www.researchgate.net/profile/Sergio-Araneda?ev=hdr_xprf}{ResearchGate profile}} & \cellR{\statscolw}{\textbf{\color{cvink}Research Interest Score: 107.3}} \\[8pt]\hline\\[4pt]
+\cellL{1.3in}{\textbf{\color{cvink}ResearchGate}} & \cellL{2.1in}{Profile: \link{https://www.researchgate.net/profile/Sergio-Araneda?ev=hdr_xprf}{ResearchGate profile}} & \cellR{\statscolw}{\textbf{\color{cvink}Research Interest Score: 107.3}} \\[4pt]\hline\\[2pt]
 \cellL{1.3in}{\textbf{\color{cvink}Google Scholar}} & \cellL{2.1in}{Profile: \link{https://scholar.google.com/citations?user=_Q0VXwsAAAAJ}{Google Scholar profile}} & \cellR{\statscolw}{\textbf{\color{cvink}Number of Citations: 35}} \\[8pt]\hline
 \end{tabular}
 
