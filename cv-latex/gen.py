@@ -20,7 +20,10 @@ PREAMBLE = r"""\documentclass[10.5pt]{article}
 \usepackage{enumitem}
 \usepackage{needspace}
 
-\definecolor{cvgray}{RGB}{237,237,237}
+% Turquoise Oasis palette (colordrop.io/palette/29291) — shared with the website
+\definecolor{cvgray}{RGB}{209,241,232}    % d1f1e8, table row tint
+\definecolor{cvteal}{RGB}{15,127,104}     % 0f7f68, headings & links
+\definecolor{cvtealdark}{RGB}{10,89,68}   % 0a5944, rule accents
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
@@ -28,15 +31,16 @@ PREAMBLE = r"""\documentclass[10.5pt]{article}
 \raggedbottom
 \renewcommand{\arraystretch}{1}
 
-\newcommand{\link}[2]{\href{#1}{\uline{#2}}}
-\newcommand{\linkurl}[1]{\href{#1}{\uline{\seqsplit{#1}}}}
-\newcommand{\linkurltext}[2]{\href{#1}{\uline{\seqsplit{#2}}}}
+\newcommand{\link}[2]{\href{#1}{\color{cvteal}\uline{#2}}}
+\newcommand{\linkurl}[1]{\href{#1}{\color{cvteal}\uline{\seqsplit{#1}}}}
+\newcommand{\linkurltext}[2]{\href{#1}{\color{cvteal}\uline{\seqsplit{#2}}}}
 
 \newcommand{\cvsection}[1]{%
-  \Needspace{4\baselineskip}\par\vspace{12pt}{\fontsize{17}{20}\selectfont\bfseries #1}\par\vspace{5pt}%
+  \Needspace{4\baselineskip}\par\vspace{12pt}{\fontsize{17}{20}\selectfont\bfseries\color{cvteal} #1}\par
+  {\color{cvtealdark}\rule{\linewidth}{1.1pt}}\par\vspace{5pt}%
 }
 \newcommand{\cvsubsection}[1]{%
-  \Needspace{3\baselineskip}\par\vspace{6pt}{\bfseries #1}\par\vspace{3pt}%
+  \Needspace{3\baselineskip}\par\vspace{6pt}{\bfseries\color{cvtealdark} #1}\par\vspace{3pt}%
 }
 
 % A leading strut with zero extra height fixes minipage[t] top-alignment
