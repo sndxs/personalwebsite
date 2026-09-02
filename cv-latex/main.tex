@@ -1,0 +1,352 @@
+\documentclass[10.5pt]{article}
+\usepackage{fontspec}
+\setmainfont{Calibri}
+\usepackage[letterpaper,margin=0.75in,top=0.6in,bottom=0.65in]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[colorlinks=false,pdfborder={0 0 0}]{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{seqsplit}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{ragged2e}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{needspace}
+
+\definecolor{cvgray}{RGB}{237,237,237}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{empty}
+\raggedbottom
+\renewcommand{\arraystretch}{1}
+
+\newcommand{\link}[2]{\href{#1}{\uline{#2}}}
+\newcommand{\linkurl}[1]{\href{#1}{\uline{\seqsplit{#1}}}}
+\newcommand{\linkurltext}[2]{\href{#1}{\uline{\seqsplit{#2}}}}
+
+\newcommand{\cvsection}[1]{%
+  \Needspace{4\baselineskip}\par\vspace{12pt}{\fontsize{17}{20}\selectfont\bfseries #1}\par\vspace{5pt}%
+}
+\newcommand{\cvsubsection}[1]{%
+  \Needspace{3\baselineskip}\par\vspace{6pt}{\bfseries #1}\par\vspace{3pt}%
+}
+
+% A leading strut with zero extra height fixes minipage[t] top-alignment
+% when a minipage's content is a bare image with no text baseline: without
+% it, the image hangs upward from the reference line instead of downward.
+\newcommand{\imgtop}[1]{\strut\vspace{-\baselineskip}\par\includegraphics[width=1.05in,height=0.62in,keepaspectratio]{img/#1}}
+
+% Job-style entry: bold title line, italic subtitle line, body paragraph, logo on right
+\newcommand{\jobentry}[4]{%
+  \par\noindent\begin{minipage}[t]{4.9in}
+  \raggedright{\bfseries #1}\par
+  {\itshape #2}\par
+  #3
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{1.2in}\raggedleft
+  \imgtop{#4}
+  \end{minipage}\par\vspace{7pt}%
+}
+\newcommand{\jobentrynologo}[3]{%
+  \par\noindent\begin{minipage}[t]{4.9in}
+  \raggedright{\bfseries #1}\par
+  {\itshape #2}\par
+  #3
+  \end{minipage}\par\vspace{7pt}%
+}
+
+% Citation-style entry: one formatted paragraph, logo on right
+\newcommand{\pubentry}[2]{%
+  \par\noindent\begin{minipage}[t]{4.9in}
+  \raggedright #1
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{1.2in}\raggedleft
+  \imgtop{#2}
+  \end{minipage}\par\vspace{6pt}%
+}
+\newcommand{\pubentrynologo}[1]{%
+  \par\noindent\begin{minipage}[t]{4.9in}
+  \raggedright #1
+  \end{minipage}\par\vspace{6pt}%
+}
+
+% Document has no math content, so make underscores literal everywhere
+% (avoids escaping every underscore in ResearchGate/DOI URLs by hand).
+\catcode`\_=12\relax
+
+\begin{document}
+
+{\fontsize{30}{34}\selectfont Sergio Araneda, Ph.D.}\par\vspace{2pt}
+\noindent\begin{minipage}[t]{4in}
+{\fontsize{11}{13}\selectfont sondaxius@gmail.com}\par
+{\fontsize{11}{13}\selectfont \link{https://github.com/sndxs}{github.com/sndxs}}
+\end{minipage}\hfill
+\begin{minipage}[t]{1.2in}\raggedleft
+\strut\vspace{-\baselineskip}\par\includegraphics[width=1in,keepaspectratio]{img/github.png}
+\end{minipage}
+\par\vspace{10pt}
+
+\noindent\begin{minipage}[t]{0.9in}
+\includegraphics[width=0.7in]{img/umass_seal.png}\par\vspace{20pt}
+\includegraphics[width=0.7in]{img/uchile.jpg}
+\end{minipage}\hfill
+\begin{minipage}[t]{5.2in}
+Ph.D., Research, Educational Measurement, and Psychometrics\par
+University of Massachusetts Amherst 2019 - 2022\par\vspace{14pt}
+Mathematical Civil Engineer\par
+Universidad de Chile 2005 -- 2013\par\vspace{8pt}
+{\itshape A mathematical civil engineer has 2 years in a common program with the rest of other
+engineering programs and 4 years of specific training in modern mathematics:
+Functional analysis, Measure theory, Partial Differential Equations, Stochastic
+processes, Optimization (linear, non-linear, discrete, optimal control), Discrete
+Mathematics, Numerical Methods, Information theory, and Statistics. It's a strong
+program, one of the most prestigious programs in Applied Math in Latin America.}
+\end{minipage}
+\par\vspace{4pt}
+
+\cvsection{Work Experience}
+
+\jobentry{Research Scientist, Caveon; July 2023 -- Present (3Y) --- Part-time since July 2026}
+{Remote, done from New York City, NY, US}
+{General work on research topics of relevance for Caveon, including Randomly
+Parallel Testing and the use of Large Language Models (LLM) in combination with
+Caveon's technologies like SmartItems\texttrademark. Participation in conferences and
+Collaboration with members of the company doing Research and preparing papers.}
+{caveon.png}
+
+\jobentry{Associate Psychometrician, College Board; October 2022 -- April 2023 (7M)}
+{Remote, done from New York City, NY, US}
+{I participated in the work of the PsyTech Team in the Psychometrics division at
+College Board. Part of my duties corresponded to Research related to Item
+Parameter Drift and Automatic Essay Scoring for the SAT Essay test.}
+{collegeboard.png}
+
+\jobentry{Research Assistant, Departamento de Medici\'on y Registro Educacional (DEMRE); August 2017 -- December 2018 (1Y 4M)}
+{In-person Santiago, Chile; and Remote, done from Jersey City, NJ, US}
+{DEMRE is a department under Universidad de Chile that specializes in educational
+measurement. It is responsible for designing the Prueba de Selecci\'on Universitaria
+(PSU), the exam used for college admissions in Chile. I worked as a research
+assistant in a project evaluating the use of one score named ``ranking de notas'' in
+the Chilean admission system.}
+{demre.png}
+
+\cvsection{Internships}
+
+\jobentry{Caveon, March 2022 -- August 2022}
+{Remote, done from Amherst, MA, US}
+{I worked constructing ``Smart-items,'' a technology developed by the company for Automatic
+Item Generation. I used my programming skills to create Smart-items of different types. I used
+Natural Language Processing as well to generate Correct-Incorrect statements automatically
+from a text.}
+{caveon.png}
+
+\jobentry{ETS AI Labs, June 2021 -- August 2021}
+{Remote, done from Amherst, MA, US}
+{I worked as a summer intern in one of the projects of the AI labs at ETS, an app named
+``Authentic,'' made to help early career professionals to improve their interview skills. My role
+in the agile team was to provide a logic for feedback generation for audio cues in an interview,
+specifically using filler words and effective uses of pauses.}
+{ets_ai.png}
+
+\cvsection{Other previous experiences in Finances}
+
+\jobentry{Datamart Murex Consultant, CPQi; August 2018 -- July 2019}
+{In-person Jersey City, NJ, US}
+{Working as an external consultant for RBC (Royal Bank of Canada) in a Murex
+implementation project for Rates and their internal reports. The work required
+intensive SQL programming and proficiency in Murex, a software used in the finance
+industry for derivatives management.}
+{cpqi.png}
+
+\jobentry{Back-Office Functional Consultant, Murex; September 2014 -- February 2017}
+{In-person Santiago, Chile}
+{Murex is a French software company that created the software MX.3, a platform
+financial institutions use to support the operation of financial products such as
+derivatives. My role on this job was to support clients in the Andean region on the
+functionalities related to the Back-office MX.3 provides. Most of my work was
+related to Post-trade workflow, Accounting, Confirmation documents, Settlement,
+Netting, pre-trade, and reporting (for Back-Office purposes).}
+{murex.png}
+
+\jobentry{Quantitative Analyst, Vision advisors; September 2013 -- August 2014}
+{In-person Santiago, Chile}
+{I worked as an analyst doing reports for institutional clients of our office, mostly
+related to investment recommendations and regulatory requirements.}
+{vision.png}
+
+\cvsection{Technical Skills \& Languages}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{0.55in} p{1.95in} X@{}}
+\rowcolor{cvgray}\includegraphics[height=0.42in]{img/python.png} & \textbf{Python} & Working with Python since 2013. Machine learning $\rightarrow$ Pytorch. \\[7pt]
+\rowcolor{cvgray}\includegraphics[height=0.42in]{img/rlang.png} & \textbf{R} & Working with R since 2018. \\[7pt]
+\rowcolor{cvgray}\includegraphics[height=0.42in]{img/code_icon.png} & \textbf{Other scripting languages} & SQL, MATLAB, Java, XML, XSL, UNIX, Stata, Git. \\[7pt]
+\rowcolor{cvgray}\includegraphics[height=0.42in]{img/irt.png} & \textbf{Psychometric \& Statistical Software} & FlexMIRT, MPlus. \\[7pt]
+\rowcolor{cvgray}\includegraphics[height=0.42in]{img/optimization.png} & \textbf{Optimization Software} & Gurobi, Cplex. \\[7pt]
+\end{tabularx}
+
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{0.55in} p{1.95in} X@{}}
+\rowcolor{cvgray}\includegraphics[height=0.42in]{img/flag_usa.png} & \textbf{English} & Advanced reading level, Advanced oral level, Advanced writing level. TOEFL iBT score 102/120 \\[7pt]
+\rowcolor{cvgray}\includegraphics[height=0.42in]{img/flag_france.png} & \textbf{French} & Advanced reading level, Intermediate oral level, Intermediate writing level. \\[7pt]
+\rowcolor{cvgray}\includegraphics[height=0.42in]{img/flag_mexico.png} & \textbf{Spanish} & Native Language. \\[7pt]
+\end{tabularx}
+
+\cvsection{Teaching Experience}
+
+\jobentry{First Year Seminar (FYS) Principles of game design applied in Education, Fall 2021}
+{College of Education, University of Massachusetts Amherst}
+{This course covers core principles of game design, focusing on best practices and
+methodologies for creating engaging and effective games. Emphasis is placed on the
+application of game design concepts in educational contexts, enabling students to explore
+how game mechanics and design principles can enhance learning experiences. I created this
+course.}
+{umass_seal.png}
+
+\jobentry{Probability and Statistics, Fall 2012}
+{Facultad de Ciencias F\'isicas y Matem\'aticas, Universidad de Chile}
+{This course covers introductory topics to probability, and some initial topics related to
+statistics.}
+{uchile.jpg}
+
+\jobentry{Mathematical Reasoning in Elementary School, Fall 2011}
+{Facultad de Ciencias F\'isicas y Matem\'aticas, Universidad de Chile}
+{This course covers an introduction to the concept of mathematical reasoning and its
+applications in the classroom for K-12 math teaching.}
+{uchile.jpg}
+
+\jobentry{Linear Algebra, Fall 2008}
+{Facultad de Ciencias F\'isicas y Matem\'aticas, Universidad de Chile}
+{This course covers an introduction to linear algebra for engineering students.}
+{uchile.jpg}
+
+\cvsection{Publications}
+
+\noindent\begin{tabularx}{\linewidth}{@{}p{1.3in} p{2in} X@{}}
+\rowcolor{cvgray}\textbf{ResearchGate} & Profile: \link{https://www.researchgate.net/profile/Sergio-Araneda?ev=hdr_xprf}{ResearchGate profile} & \textbf{Research Interest Score}: 94.4 \\[5pt]
+\rowcolor{cvgray}\textbf{Google Scholar} & Profile: \link{https://scholar.google.com/citations?user=_Q0VXwsAAAAJ}{Google Scholar profile} & \textbf{Number of Citations}: 31 \\[5pt]
+\end{tabularx}
+
+\cvsubsection{Peer Reviewed Journals}
+\pubentry{Araneda, S., Fremer, J., \& Foster, D. (2024). Commentary: Past, Present, and Future of
+Educational Measurement. \textit{Educational Measurement: Issues and Practice}.
+\linkurl{https://doi.org/10.1111/emip.12632}}
+{edu_measurement.png}
+\pubentry{Araneda, S., Lee, D., Lewis, J., Sireci, S. G., Moon, J. A., Lehman, B., Arslan, B., \& Keehner, M.
+(2022). Exploring relationships among test takers' behaviors and performance using
+response process data. \textit{Education Sciences}.
+\linkurl{https://doi.org/10.3390/educsci12020104}}
+{edc_sciences.png}
+\cvsubsection{Book Chapters}
+\pubentry{Sireci, S. G., Araneda, S., \& Su\'arez-\'Alvarez, J. (2026). The Impact of Artificial Intelligence on
+Validity and Test Validation [Chapter]. \linkurl{https://www.researchgate.net/publication/409290173_The_Impact_of_Artificial_Intelligence_on_Validity_and_Test_Validation}}
+{researchgate.png}
+\pubentry{Sireci, S. G., Araneda, S., \& McIntee, K. (2025). Social justice in educational assessment: A
+blueprint for the future. \textit{Handbook for Assessment in the Service of Learning}, 2.}
+{umass_library.png}
+\cvsubsection{Pre-prints}
+\pubentry{Araneda, S. (2026). \textit{The Multiple Crises of Validity Theory in the Age of AI} [Preprint]. \linkurl{https://www.researchgate.net/publication/408940607_The_Multiple_Crises_of_Validity_Theory_in_the_Age_of_AI}}{researchgate.png}
+\pubentry{Araneda, S. (2026). \textit{Minimum Test Length for Psychometric Parallelism in Randomized Tests} [Preprint]. \linkurl{https://www.researchgate.net/publication/411161952_Minimum_Test_Length_for_Psychometric_Parallelism_in_Randomized_Tests}}{researchgate.png}
+\pubentry{Araneda, S., \& Sireci, S. G. (2026). \textit{Making the case for an experiential approach to test validation} [Preprint]. \linkurl{https://doi.org/10.13140/RG.2.2.28455.44968}}{researchgate.png}
+\pubentry{Toton, S., Araneda, S., Farr, A., \& Huynh, T. (2026). \textit{Understanding the patterns of LLM-generated responses of multiple-choice questions} [Preprint]. \linkurl{https://doi.org/10.13140/RG.2.2.33838.06728}}{researchgate.png}
+\pubentry{Araneda, S. (2026). \textit{Factor analysis in randomly parallel tests: Limitations and emerging solutions} [Pre-print]. \linkurl{https://doi.org/10.13140/RG.2.2.12857.53609}}{researchgate.png}
+\pubentry{Foster, C., \& Araneda, S. (2026). \textit{Assessing Pre-Exposure Risks of LLM-Generated Item Pools} [Pre-print]. \linkurl{https://doi.org/10.13140/RG.2.2.25885.37602}}{researchgate.png}
+\pubentry{Foster, C., Weaver, S., \& Araneda, S. (2025). \textit{Using ChatGPT for Semi-Automatic Generation of Items for Summative Assessment: A Case Study} [Pre-print]. \linkurl{https://doi.org/10.13140/RG.2.2.29947.78884}}{researchgate.png}
+\pubentry{Araneda, S., Marder, A., Foster, C., \& Foster, D. F. (2025). \textit{Reliability in randomly parallel tests: A practical guide} [Preprint]. \linkurl{https://doi.org/10.13140/RG.2.2.22375.28329}}{researchgate.png}
+\pubentry{Araneda, S., Wells, C., Colvin, K., O'Donell, F., Padellaro, F., \& Foster, D. (2025). \textit{Prompt Engineering for Binary Response Item Generation using ChatGPT} [Pre-print]. \linkurl{https://doi.org/10.13140/RG.2.2.23040.29448}}{researchgate.png}
+\pubentry{Foster, D., Foster, C., Marder, A., \& Araneda, S. (2025). \textit{Evaluating the Test Security Benefits of Randomly Parallel Tests: Protecting Against Pre-Knowledge} [Pre-print]. \linkurl{https://doi.org/10.13140/RG.2.2.31968.75520}}{researchgate.png}
+\pubentry{Araneda, S., Sireci, S. G., Cruz, E. C., \& Serrano, F. M. (2025). \textit{A Conceptual Framework for Test-Taker Experience in Educational Testing} [Pre-print]. \linkurl{https://doi.org/10.13140/RG.2.2.13395.85282}}{researchgate.png}
+\pubentry{Araneda, S. (2025) \textit{Tests as Socio-Technical Artifacts: First Thoughts on its Implications for Validity Theory} [Pre-print]. \linkurl{https://philpapers.org/rec/ARATAS-5}}{philpapers.png}
+\pubentry{Araneda, S. (2025). \textit{Tests as Socio-Technical Artifacts: Defining Validity as a Theory of Artifact Functioning} [Preprint]. \linkurl{https://www.researchgate.net/publication/398710886_Tests_as_Socio-Technical_Artifacts_Defining_Validity_as_a_Theory_of_Artifact_Functioning}}{researchgate.png}
+\cvsubsection{White papers \& Dissertation}
+\pubentry{Araneda, S. (2023). \textsc{An Experiential Approach to Test Design and Validation} [Dissertation, University of Massachusetts Amherst]. Scholarworks@UMassAmherst. \linkurl{https://hdl.handle.net/20.500.14394/19086} \link{https://www.youtube.com/watch?v=JD3EywvkcsU}{Link to Video}}{umass_seal.png}
+\pubentry{Araneda, S., Beiting-Parrish, M., Bottoms, B., La Torre, D., McIntee, K., Musa, S., Sarac, M., Qingzhou, S., Tolentino, L., Tufail, M. \& Valdivia Medinaceli, M. (2023). \textit{Statement about the New Edition of the Standards for Educational \& Psychological Testing} [White paper]. \linkurl{https://doi.org/10.31235/osf.io/dv4pa}}{ncme.png}
+\pubentry{Araneda, S., Vargas, A. O., Ch\'avez, C., de Padua, E., \& G\'andara, F. (2023). \textit{PAES y el futuro de las pruebas para la admisi\'on universitaria en Chile: ¿son suficientes los cambios para un sistema de admisi\'on equitativo?} [White paper]. \linkurl{https://doi.org/10.31235/osf.io/jh642}}{feved.png}
+\cvsubsection{Newspapers}
+\pubentry{Araneda, S. (2026, January 12th) Sobre el autoexilio. \textit{El Desconcierto}. \linkurl{https://eldesconcierto.cl/2026/01/12/sobre-el-autoexilio}}{el_desconcierto.png}
+\pubentry{Araneda, S. (2024, January 9th) Ranking PAES sin interpretaci\'on. \textit{El Desconcierto}. \linkurl{https://eldesconcierto.cl/2024/01/09/ranking-paes-sin-interpretacion}}{el_desconcierto.png}
+\pubentry{Araneda, S. (2023, January 8th) PAES y \textit{rankings}. \textit{El Mercurio}.}{el_mercurio.png}
+\pubentry{Araneda, S. (2022, December 1st) Fin a la PAES. \textit{La Tercera}.}{la_tercera.png}
+\pubentry{Araneda, S., Chavez, C., Fern\'andez, MP., G\'andara, F., Jimenez, F., Labarca, L., Osses Vargas, A., \& Zunino, V. (2022, July 14th) Pruebas PAES y Manual T\'ecnico. \textit{La Tercera}.}{la_tercera.png}
+\pubentry{Araneda, S., de Padua, E., G\'andara, F., Labarca, L., Osses Vargas, A., Villa, S., Zepeda, S., \& Zunino, V. (2022, July 3rd) Simce: una decisi\'on errada. \textit{El Mercurio}.}{el_mercurio.png}
+\pubentry{Araneda, S., Chavez, C., de Padua N\'ajera, E., G\'andara, F., Jimenez, F. A., Osses, A., Zepeda, S., \& Zunino Edelsberg, V. (2021, April 19th) Vuelta atr\'as: reincorporaci\'on de Simce lectura 2\textsuperscript{o} b\'asico. \textit{La Tercera}.}{la_tercera.png}
+\pubentry{Araneda, S. (2021, August 1st) Los riesgos de la PDT en tiempos de Covid-19. \textit{El Desconcierto}. \linkurl{https://www.eldesconcierto.cl/opinion/2021/01/08/los-riesgos-de-la-prueba-de-transicion-pdt-en-tiempos-de-covid-19.html}}{el_desconcierto.png}
+\cvsection{Presentations in Conferences}
+\cvsubsection{Organized Sessions}
+\pubentry{Araneda, S. (Chair), Ercikan, K., Solano-Flores, G., Dept, S., Gonthier, I., \& Sireci, S. G. (Discussant). (2026, July 2). \textit{Emerging challenges in the use of artificial intelligence in educational testing \& certification} [Symposium]. International Test Commission Conference 2026, Auckland, New Zealand.}{itc_2026.png}
+\pubentry{Araneda, S. (Chair), Padilla, J.-L., Ben\'itez, I., Su\'arez-\'Alvarez, J., Solano-Flores, G., Ruiz-Primo, M. A., \& Sireci, S. G. (Discussant). (2026, July 1). \textit{Hispanic-American perspectives on the concept of validity} [Symposium]. International Test Commission Conference 2026, Auckland, New Zealand.}{itc_2026.png}
+\pubentry{Araneda, S. (Organizer), Toton, S., Foster, C., Marder, A., \& Foster, D. (Discussant). (2025, November 4). \textit{New AI-driven threats to test security: Understanding risks and building defenses} [Organized conference session]. Conference on Test Security (COTS 2025), University of Massachusetts Amherst, Amherst, MA, United States.}{cots2025.png}
+\pubentry{Araneda, S. (Organizer), Foster, C., McCaffrey, D., Hoffman, A., Beiting-Parrish, M., \& von Davier, M. (Discussant). (2025, October 28). \textit{Validating AI in educational testing: Challenges and future directions} [Organized session]. AIME Conference (AIME-Con), National Council on Measurement in Education (NCME), Pittsburgh, PA, United States.}{aimecon.png}
+\pubentry{Araneda, S. (Organizer), Fremer, J., Ladson-Billings, G., Sireci, S. (2025, April) \textit{One Hundred Years of Criticisms Against Standardized Testing} [Organized Discussion]. National Council on Measurement in Education annual meeting, Denver. \link{https://www.researchgate.net/publication/391704152_100_years_of_criticisms_against_standardized_testing}{Link to Slides}}{ncme.png}
+\pubentry{Araneda, S. (Chair), Torres-Iribarra, D., Alarc\'on-Bustamante, E., Gonzalez-Wegener, X., G\'andara, F., Fremer, J. (Discussant). (2024, July) \textit{College Admission in Chile: Inequity, Social Unrest, and More Testing} [Symposium]. International Testing Commission bi-annual meeting, Granada.}{itc.png}
+\pubentry{Araneda, S. (Organizer), Sarac, M., Beiting-Parrish, M., Valdivia Medinaceli, M. B., Huff, S., Huff, K. (Discussant). (2023, April) \textit{GSIC Standards Study Group: Recommendations from Graduate Students for Its New Version} [Paper Session]. National Council on Measurement in Education annual meeting, Chicago.}{ncme.png}
+\cvsubsection{Panel Participation}
+\pubentry{Araneda, S., Olson, J., Sireci, S., \& Drane, W. (2025, November 4). \textit{Latest research and development in using generative AI for state assessment programs: Cutting edge R\&D and applications for K--12 testing} [Conference panel]. Conference on Test Security (COTS 2025), University of Massachusetts Amherst, Amherst, MA, United States.}{cots2025.png}
+\pubentry{Drane, W., Quesen, S., Araneda, S., Olson, J. (2024, October) \textit{Use of Generative AI in Secure Item Development for State Assessment Programs: Recommendations for Future Implementation by States} [Panel Presentation]. Conference on Test Security, Salt Lake City. \link{https://www.youtube.com/watch?v=Jz-2YqcuPTM}{Link to Video}}{cots_generic.jpg}
+\pubentry{Chakraborty, R., \& Jackson, J. A. (Chairs). (2023, April). \textit{Navigating job opportunities and preparing for job markets: Let's get ready together} [Panel discussion]. Graduate Student Council Division D Fireside Chat, AERA 2023 Annual Meeting, InterContinental Chicago Magnificent Mile, Chicago, IL. Panelists: Boyd, B., Van Orman, D. S. J., Riley-Lepo, E., Araneda, S., \& Choiseul-Praslin, B. D.}{aera.png}
+\cvsubsection{Training Sessions}
+\pubentry{Araneda, S., Foster, C., \& Weaver, S. (2025, October 27). \textit{Using generative AI for item construction: State-of-the-art and practical lessons} [Training session]. AIME Conference (AIME-Con), National Council on Measurement in Education (NCME), Pittsburgh, PA, United States.}{aimecon.png}
+\cvsubsection{Individual Presentations}
+\pubentry{Araneda, S. (2026, July 2). \textit{The Multiple Crises of Validity Theory in the Age of AI} [Conference presentation]. International Test Commission Conference 2026, Auckland, New Zealand. \link{https://www.researchgate.net/publication/408184953_The_Multiple_Crises_of_Validity_Theory_in_the_Age_of_AI}{Link to Slides}}{itc_2026.png}
+\pubentry{Araneda, S. (2026, July 1). \textit{Making the case for an experiential approach to test design and validation} [Conference presentation]. International Test Commission Conference 2026, Auckland, New Zealand. \link{https://www.researchgate.net/publication/408184695_Making_the_Case_for_An_Experiential_Approach_to_Test_Design_and_Validation}{Link to Slides}}{itc_2026.png}
+\pubentry{Araneda, S. (2026, July 1). \textit{Randomly parallel tests as a test security and measurement strategy: Theory, evidence, and practical implications} [Conference presentation]. International Test Commission Conference 2026, Auckland, New Zealand. \link{https://www.researchgate.net/publication/408184705_Randomly_Parallel_Tests_as_a_Test_Security_and_Measurement_Strategy_Theory_Evidence_and_Practical_Implications}{Link to Slides}}{itc_2026.png}
+\pubentry{Araneda, S. (2026, April). \textit{Factor analysis in randomly parallel tests: Limitations and emerging solutions} [Conference presentation]. National Council on Measurement in Education Annual Meeting (NCME 2026), Los Angeles, CA, United States. \link{https://www.youtube.com/watch?v=XPnhPopyrnQ&t=587s}{Link to Video}}{ncme_2026.png}
+\pubentry{Araneda, S., \& Foster, D. (2025, November 5). \textit{A phenomenological framework for stakes definition in educational testing} [Virtual conference presentation]. Conference on Test Security (COTS 2025), University of Massachusetts Amherst, Amherst, MA, United States.}{cots2025.png}
+\pubentry{Araneda, S. (2025, November 4). \textit{There are many ways to skin a CAT: Exploring alternative ways for doing adaptive testing} [Conference presentation]. Conference on Test Security (COTS 2025), University of Massachusetts Amherst, Amherst, MA, United States.}{cots2025.png}
+\pubentry{Marder, A., \& Araneda, S. (2025, November 4). \textit{Validating Observer for online test security: Preliminary evidence on detecting examinee use of ChatGPT} [Conference presentation]. Conference on Test Security (COTS 2025), University of Massachusetts Amherst, Amherst, MA, United States.}{cots2025.png}
+\pubentry{Araneda, S., Lee, W.-C., \& Kim, S. (2025, October 29). \textit{Equating forms using synthetic data via LLM respondents and DCM models} [Conference presentation]. AIME Conference (AIME-Con), National Council on Measurement in Education (NCME), Pittsburgh, PA, United States. \link{https://www.researchgate.net/publication/397016164_Equating_Forms_Using_Synthetic_Data_via_LLM_Respondents_and_Auxiliary_DCM_Models}{Link to Slides}}{aimecon.png}
+\pubentry{Araneda, S. (2025, October 29). \textit{Tests as socio-technical artifacts: First thoughts on its implications for validity theory} [Conference presentation]. AIME Conference (AIME-Con), National Council on Measurement in Education (NCME), Pittsburgh, PA, United States. \link{https://www.youtube.com/watch?v=wiZpPjoCtw4}{Link to Video} \link{https://www.researchgate.net/publication/397016643_Presentation_Tests_as_Socio-Technical_Artifacts_First_Thoughts_on_its_Implications_for_Validity_Theory}{Link to Slides}}{aimecon.png}
+\pubentry{Araneda, S. (2025, October 28). \textit{Function ascription, use-plans and how to validate AI tools used in educational testing} [Conference presentation]. AIME Conference (AIME-Con), National Council on Measurement in Education (NCME), Pittsburgh, PA, United States. \link{https://www.youtube.com/watch?v=WHDiJHOZld8}{Link to Video} \link{https://www.researchgate.net/publication/397016162_Presentation_Function_Ascription_Use-plans_and_How_to_Validate_AI_Tools_Used_in_Educational_Testing}{Link to Slides}}{aimecon.png}
+\pubentry{Araneda, S., \& Foster, C. (2025, October 23). \textit{Assessing pre-exposure risks of LLM-generated item pools} [Paper presentation]. New England Educational Research Association (NERA) Annual Conference, Trumbull, CT, United States. \link{https://www.youtube.com/watch?v=VMlFHszRGck}{Link to Video} \link{https://www.researchgate.net/publication/397016004_Assessing_Pre-Exposure_Risks_of_LLM-Generated_Item_Pools}{Link to Slides}}{nera.png}
+\pubentry{Araneda, S. (2025, octubre 10). \textit{Repensando la validez de las pruebas desde la filosof\'ia de la tecnolog\'ia: Una perspectiva de artefactos socio-t\'ecnicos} [Presentaci\'on en seminario virtual]. Segundo Seminario FEVED: Evaluaci\'on Educacional Hoy: Entre la Evidencia, la Tecnolog\'ia y el Aula, Foro de Evaluaci\'on Educacional de Chile (FEVED).}{feved_seminar.jpg}
+\pubentry{Araneda, S., Marder, A., Foster, C., Foster, D. (2025, April) \textit{Reliability in Randomly Parallel Tests: A Practical Guide} [Presentation]. National Council on Measurement in Education annual meeting, Denver. \link{https://www.researchgate.net/publication/393062009_Reliability_in_Randomly_Parallel_Tests_A_Practical_Guide}{Link to Slides}}{ncme.png}
+\pubentry{Araneda, S. (2025, April) \textit{Investigating Different Prompt Engineering Strategies Across Different Content Areas} [Presentation]. National Council on Measurement in Education annual meeting, Denver. \link{https://www.researchgate.net/publication/391737333_Investigating_Different_Prompt_Engineering_Strategies_Across_Different_Content_Areas}{Link to Slides}}{ncme.png}
+\pubentry{Araneda, S. (2025, March) \textit{The arms race of AI and Test Security} [Presentation]. Innovations in Testing, Association of Test Publishers, Orlando. \link{https://www.researchgate.net/publication/393177302_The_Arms_Race_of_AI_and_Test_Security}{Link to Slides}}{atp.png}
+\pubentry{Araneda, S. (2024, October) \textit{Score-Difference-at-Risk (SDaR): Using Risk Metrics to Anticipate the Impact of Test Security Breaches}. [Presentation]. Conference on Test Security, Salt Lake City. \link{https://www.researchgate.net/publication/393177336_Score-Difference-at-Risk_SDaR_Using_risk_metrics_to_anticipate_the_impact_of_test_security_breaches}{Link to Slides}}{cots_generic.jpg}
+\pubentry{Araneda, S., Colvin, K., O'Donnell, F., Padellaro, F., Wells, C. (2024, October) \textit{Prompt Engineering for Binary Response Item Generation Using ChatGPT}. [Presentation]. Northeastern Educational Research Association Annual Meeting, Trumbull.}{nera.png}
+\pubentry{Araneda, S. (2024, July) \textit{Score-Difference-at-Risk (SDaR): Using risk metrics to anticipate negative impact}. [Presentation]. IMPS, Praha. \link{https://www.youtube.com/watch?v=_cEUga7GG60}{Link to Video} \link{https://www.researchgate.net/publication/393061901_Score-Difference-at-Risk_SDaR_Using_risk_metrics_to_anticipate_negative_impact}{Link to Slides}}{imps.jpg}
+\pubentry{Foster, C., Weaver, S. \& Araneda, S. (2024, July) \textit{Using ChatGPT for Semi-Automatic Generation of Item for Summative Assessment: a Case Study} [Presentation]. International Test Commission Bi-Annual Meeting, Granada. \link{https://www.researchgate.net/publication/393062177_Using_ChatGPT_for_Semi-Automatic_Generation_of_Item_for_Summative_Assessment_a_Case_Study_ITC_bi-annual_conference_Granada_2024}{Link to Slides}}{itc.png}
+\pubentry{Araneda, S., Sireci, S., Crespo-Cruz, E. \& Mena-Serrano, F. (2024, July) \textit{A Conceptual Framework for Assessment Experience in Educational Testing} [Presentation]. International Test Commission Bi-Annual Meeting, Granada.}{itc.png}
+\pubentry{Araneda, S. \& Gonzalez-Wegener, X. (2024, July) \textit{Studying Test-Taker Experiences Shared on TikTok about Standardized Testing and College Admission in Chile} [Presentation]. International Test Commission Bi-Annual Meeting, Granada.}{itc.png}
+\pubentry{G\'andara, F. \& Araneda, S. (2024, July) \textit{Change is never easy: the case of Chilean University admissions and their new battery of standardized tests PAES} [Presentation]. International Test Commission Bi-Annual Meeting, Granada.}{itc.png}
+\pubentry{Foster, D., Foster, C., Marder, A. \& Araneda, S. (2024, April) \textit{Evaluating the test security benefits of randomly parallel tests: protecting against pre-knowledge} [Presentation]. National Council on Measurement in Education annual meeting, Philadelphia. \link{https://www.youtube.com/watch?v=A6fOUrriuK4}{Link to Video} \link{https://www.researchgate.net/publication/393062010_Evaluating_the_Test_Security_Benefits_of_Randomly_Parallel_Tests_Protecting_Against_Pre-Knowledge}{Link to Slides}}{ncme.png}
+\pubentry{Araneda, S. (2024, March) \textit{Comparing Humans, NLP models and LLMs to create binary response items}. [Presentation]. Innovations in Testing, Association of Test Publishers, Anaheim. \link{https://youtu.be/kl1XSzNrWWs}{Link to Video} \link{https://www.researchgate.net/publication/393062272_Comparing_Humans_NLP_Models_and_LLMs_to_Create_Binary_Response_Items}{Link to Slides}}{atp.png}
+\pubentry{Araneda, S. (2022, April) \textit{Situating the validity argument: lessons from feminist epistemologies} [Paper presentation]. National Council on Measurement in Education annual meeting, San Diego. \link{https://www.youtube.com/watch?v=ghipI3boCwU}{Link to Video}}{ncme.png}
+\pubentry{Araneda, S., Lee, D., Lewis, J., O'Riordan, M., Sireci, S. \& Zenisky, A. L. (2021, October) \textit{Incorporating SmartItem\texttrademark\ Technology on a Multistage-Adaptive Test}. Northeastern Educational Research Association annual meeting [Virtual].}{nera.png}
+\pubentry{Sireci, S. \& Araneda, S. (2021, June) \textit{Think Positive: How to Use Assessments to Bolster Student Learning} [Paper presentation]. National Council on Measurement in Education annual meeting [Virtual].}{ncme.png}
+\pubentry{Araneda, S. \& Sireci, S. (2021, June) \textit{An Experiential approach to test design and validation} [Paper presentation]. National Council on Measurement in Education annual meeting [Virtual].}{ncme.png}
+\pubentry{Araneda, S., Arslan, B., Keehner, M., Lee, D., Lehman, B., Lewis, J., Moon, J. \& Sireci, S. (2021, June) \textit{Exploring Relationships Among Examinees' Behaviors and Performance Using Response Process Data} [Paper presentation]. National Council on Measurement in Education annual meeting [Virtual]. \link{https://www.researchgate.net/publication/352447567_Exploring_Relationships_Among_Examinees'_Behaviors_and_Performance_Using_Response_Process_Data}{Link to Slides}}{ncme.png}
+\cvsubsection{Demonstrations}
+\pubentry{Araneda, S. (2024, October) \textit{Using ChatGPT for the Automatic Creation of SmartItems\texttrademark\ for the Purposes of Test Security and Personalized Assessment}. [Demonstration]. Conference on Test Security, Salt Lake City.}{cots_generic.jpg}
+\pubentry{Araneda, S. \& Foster, D. (2023, October) \textit{Using ChatGPT for the Automatic Creation of Smartitems\texttrademark\ for the Purposes of Test Security and Culturally Responsive Assessment}. [Demonstration]. Conference on Test Security, Tempe. \linkurl{https://youtu.be/LykchEfB1ic}}{cots_generic.jpg}
+\pubentry{Araneda, S., Foster, D. (2023, April) \textit{SmartItem\texttrademark: using Automatic Item Generation for Test Security} [Demonstration]. National Council on Measurement in Education annual meeting, Chicago.}{ncme.png}
+\pubentry{Araneda, S. (2022, April) \textit{Reliability challenge! A Game to teach CTT reliability in educational measurement} [Demonstration]. National Council on Measurement in Education annual meeting, San Diego.}{ncme.png}
+\cvsubsection{Posters}
+\pubentry{Araneda, S. \& Sireci, S. (2023, April) \textit{Sketching a Validity Argument from User Experiences Shared on Twitter} [Poster presentation]. National Council on Measurement in Education annual meeting, Chicago.}{ncme.png}
+\pubentry{Araneda, S., Keller, L. (2023, April) \textit{An Experiential Approach in Classroom Assessment: Centering Test Design around Elicited Experiences} [Poster presentation]. American Educational Research Association Annual Meeting, Chicago.}{aera.png}
+\pubentry{Araneda, S., Silva, M. \& Varas, L. (2020, Apr 17 - 21) \textit{Improving equity in university admission through a class rank measure: Easier said than done} [Poster Session]. American Educational Research Association Annual Meeting, San Francisco (Conference Canceled). \linkurl{http://tinyurl.com/wvpvjzq} \link{https://www.researchgate.net/publication/342376731_Impacto_del_ranking_de_notas_en_el_acceso_a_las_universidades_del_Sistema_Unico_de_Admision}{Link to Slides}}{aera.png}
+\cvsubsection{Discussant}
+\pubentry{Araneda, S. (2025, April). \textit{Test Security: Fraudulent Behavior Detection Methods} [Discussant]. National Council on Measurement in Education Annual Meeting, Denver.}{ncme.png}
+\cvsection{Social Media \& Other Virtual Venues}
+\cvsubsection{Individual Presentations}
+\pubentry{Araneda, S. (2024, August) \textit{Securing Tests with AI: Initial Explorations in Item Generation}. [Virtual] Artificial Intelligence in Educational Measurement SIGIMIE, NCME. \link{https://www.youtube.com/watch?v=eH-QbBkeYQo}{Link to Video}}{ncme.png}
+\pubentry{Araneda, S. (2021, June) \textit{An Experiential approach to test design and validation} [Paper presentation]. Edmund Gordon Centennial Celebration: Sustaining Diversity, Culture, and Identity in Pedagogies and Assessments [Virtual]. \link{https://www.youtube.com/watch?v=4n_BX6zW8L4&t=233s}{Link to Video}}{umass_seal.png}
+\cvsubsection{Organized Online Conferences}
+\pubentry{Labarca, L., Zunino, V., \& Araneda, S. (Organizers). (2025, October 10). Segundo Seminario FEVED: Evaluaci\'on educacional hoy: Entre la evidencia, la tecnolog\'ia y el aula [Virtual conference]. FEVED. Retrieved from \link{https://sites.google.com/view/feved/seminarios-feved/segundo-seminario?authuser=0&utm_source=chatgpt.com}{https://sites.google.com/view/feved/seminarios-feved/segundo-seminario?authuser=0}}{feved_seminar.jpg}
+\cvsubsection{Organized Single Webinars}
+\pubentry{Araneda, S., G\'andara, F., Santelices, V., Torres-Iribarra, D., Zunino, V. (2021, May) \textit{Pruebas Estandarizadas y Sistemas de evaluaci\'on de aprendizajes en Chile durante y post pandemia}. [Virtual] Nexos Chile-USA \& FEVED. \linkurltext{https://www.youtube.com/watch?v=4rYXu75fn-k&t=3944s}{https://www.youtube.com/watch?v=4rYXu75fn-k}}{nexos.png}
+\cvsubsection{Organized Webinar Series}
+\jobentry{Webinars Validez, Fall 2024 -- Spring 2025}{Foro Chileno de Profesionales en Evaluacion Educacional FEVED}{This series covered interviews with different Spanish-speaker experts in Educational Assessment about the concept of Validity. The series is published on my personal Youtube Channel \linkurl{https://www.youtube.com/@elsheshin}}{feved.png}
+\jobentry{NCME GSIC Standards Study Group, Fall 2021, Spring 2022 and Summer 2022}{Graduate Student Issues Committee at NCME}{This series covered discussion sessions between students and Q\&A with experts about each of the chapters in the Standards for Educational and Psychological Measurement. This series can be found at the NCME website and youtube channel \linkurl{https://www.ncme.org/students/student-programs/standards-study-group}}{ncme.png}
+\jobentry{Entrevistas FEVED, Spring 2022}{Foro Chileno de Profesionales en Evaluacion Educacional FEVED}{This series covered interviews with different experts in Educational Assessment in Chile. The series is published on the FEVED Youtube Channel \linkurl{https://www.youtube.com/@feved-forochilenoevaluacion}}{feved.png}
+\cvsection{Volunteer Work and Public Engagement}
+\jobentry{Committee member, Website Committee}{May 2025 -- April 2026}{I am a member of the Website Committee at NCME. We helped on the transition to the new website.}{ncme.png}
+\jobentry{Vice-coordinator, FEVED Foro chileno de profesionales en evaluaci\'on educacional (Chilean Forum of professionals in educational assessment).}{March 2025 -- February 2026}{Working together with Loretta Labarca in the coordination of FEVED, an advocacy group of Measurement and Assessment Professionals in Chile for best practices in Educational Testing. More info (in Spanish) \link{http://www.feved.cl/}{www.feved.cl}}{feved.png}
+\jobentry{Committee member, Diversity Issues in Testing Committee (CODIT)}{May 2024 -- April 2025}{I was a member of the Diversity Issues in Testing Committee (CODIT) at NCME. I served as a reviewer of some assignments specific of the committee.}{ncme.png}
+\jobentry{Chair, NCME Graduate Student Issues Committee (GSIC).}{July 2021 -- May 2023}{I was one of the chairs of the NCME Graduate student issues committee (GSIC). This committee is in charge of raising the concerns and voices of graduate students to the NCME board and organizing social events for the graduate students. I led different types of activities, with great evaluation from the NCME board during my term as a Senior Chair in the annual conference in Chicago (2023).}{ncme.png}
+\jobentry{Coordinator, NCME-GSIC Standards study group \& Statement New Edition of the Standards}{October 2021 -- April 2023}{I led a study group focusing on the current version of the Standards, doing a series of discussions among students and Q\&A sessions with experts. In the second stage of the study group, we wrote a statement about the new Edition of the Standards with our position as a generation. Find more info about the Standards Study Group \link{https://www.ncme.org/students/student-programs/standards-study-group}{here}.}{ncme.png}
+\jobentry{Coordinator, FEVED Foro chileno de profesionales en evaluaci\'on educacional (Chilean Forum of professionals in educational assessment).}{September 2020 -- August 2021}{First coordinator of the group FEVED.}{feved.png}
+
+\end{document}
