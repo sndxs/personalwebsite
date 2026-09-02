@@ -943,13 +943,13 @@
       <span class="block-tag">Organized Webinar Series</span>
 
       <h3 class="block-title" style="cursor:pointer;" onclick="show('webinars-validez')">Webinars Validez <span style="font-size:.8rem;font-weight:400;color:var(--muted);">Fall 2024 &ndash; Spring 2025</span></h3>
-      <p style="margin-bottom:1.25rem;"><em>Foro Chileno de Profesionales en Evaluaci&oacute;n Educacional (FEVED)</em><br>A series of interviews with Spanish-speaking experts in educational assessment on the concept of validity. Published on Sergio's personal YouTube channel. <span style="color:var(--gold); cursor:pointer;" onclick="show('webinars-validez')">See all episodes &rarr;</span></p>
+      <p style="margin-bottom:1.25rem;"><em>Foro Chileno de Profesionales en Evaluaci&oacute;n Educacional (FEVED)</em><br>A series of interviews with Spanish-speaking experts in educational assessment on the concept of validity. Published on Sergio's personal YouTube channel. <a href="#webinars-validez" onclick="show('webinars-validez');return false;" style="color:var(--gold);">See all episodes &rarr;</a></p>
 
       <h3 class="block-title" style="cursor:pointer;" onclick="show('standards-study-group')">NCME GSIC Standards Study Group <span style="font-size:.8rem;font-weight:400;color:var(--muted);">Fall 2021 &ndash; Summer 2022</span></h3>
-      <p style="margin-bottom:1.25rem;"><em>Graduate Student Issues Committee at NCME</em><br>Discussion sessions and Q&amp;A with experts covering each chapter of the <em>Standards for Educational and Psychological Testing</em>, organized for the NCME graduate student community. <span style="color:var(--gold); cursor:pointer;" onclick="show('standards-study-group')">See all 28 sessions &rarr;</span></p>
+      <p style="margin-bottom:1.25rem;"><em>Graduate Student Issues Committee at NCME</em><br>Discussion sessions and Q&amp;A with experts covering each chapter of the <em>Standards for Educational and Psychological Testing</em>, organized for the NCME graduate student community. <a href="#standards-study-group" onclick="show('standards-study-group');return false;" style="color:var(--gold);">See all 28 sessions &rarr;</a></p>
 
       <h3 class="block-title" style="cursor:pointer;" onclick="show('entrevistas-feved')">Entrevistas FEVED <span style="font-size:.8rem;font-weight:400;color:var(--muted);">Spring 2022</span></h3>
-      <p><em>Foro Chileno de Profesionales en Evaluaci&oacute;n Educacional (FEVED)</em><br>A series of interviews with experts in educational assessment in Chile. <span style="color:var(--gold); cursor:pointer;" onclick="show('entrevistas-feved')">See all episodes &rarr;</span></p>
+      <p><em>Foro Chileno de Profesionales en Evaluaci&oacute;n Educacional (FEVED)</em><br>A series of interviews with experts in educational assessment in Chile. <a href="#entrevistas-feved" onclick="show('entrevistas-feved');return false;" style="color:var(--gold);">See all episodes &rarr;</a></p>
     </div>
 
   </div>
@@ -1871,7 +1871,12 @@
 <script>
   const PAGES = ['home','research','conferences','gamedesign','community','media','consulting','audit','randomized','ai','experiential','vision','recommendations','cost-reduction','insurance','growth','experiential-approach','sociotechnical','randomly-parallel','webinars-validez','entrevistas-feved','standards-study-group'];
 
-  function show(id) {
+  // Hash-based routing: every page gets a real, copyable URL like
+  // #webinars-validez. show() updates the hash on every navigation (so
+  // links can be copied, bookmarked, and opened in a new tab), and on
+  // load / back-forward we read the hash back to restore the page.
+  function show(id, updateHash) {
+    if (!PAGES.includes(id)) id = 'home';
     PAGES.forEach(p => {
       const page = document.getElementById('p-' + p);
       const nav  = document.getElementById('n-' + p);
@@ -1882,7 +1887,22 @@
       if (mob)  mob.classList.toggle('active', on);
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (updateHash !== false) {
+      const target = id === 'home' ? '#' : '#' + id;
+      if (window.location.hash !== target) {
+        history.pushState(null, '', target);
+      }
+    }
   }
+
+  function showFromHash() {
+    const id = window.location.hash.replace('#', '');
+    show(id || 'home', false);
+  }
+  window.addEventListener('popstate', showFromHash);
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.hash) showFromHash();
+  });
 
 
   function openModal(service) {
