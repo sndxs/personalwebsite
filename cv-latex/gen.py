@@ -6,9 +6,26 @@ def esc(s):
 
 PREAMBLE = r"""\documentclass[10.5pt]{article}
 \usepackage{fontspec}
-\setmainfont{Calibri}
-\usepackage[letterpaper,margin=0.75in,top=0.6in,bottom=0.65in]{geometry}
-\usepackage{graphicx}
+\setmainfont{Inter}[
+  Path = fonts/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-SemiBold,
+  ItalicFont = *-Italic,
+]
+\newfontfamily\playfair{PlayfairDisplay}[
+  Path = fonts/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+]
+\newfontfamily\playfairsb{PlayfairDisplay}[
+  Path = fonts/,
+  Extension = .ttf,
+  UprightFont = *-SemiBold,
+]
+\usepackage[letterpaper,margin=0.85in,top=0.75in,bottom=0.8in]{geometry}
 \usepackage{xcolor}
 \usepackage[colorlinks=false,pdfborder={0 0 0}]{hyperref}
 \usepackage[normalem]{ulem}
@@ -20,12 +37,19 @@ PREAMBLE = r"""\documentclass[10.5pt]{article}
 \usepackage{enumitem}
 \usepackage{needspace}
 
-% Turquoise Oasis palette (colordrop.io/palette/29291) — shared with the website
-\definecolor{cvbg}{RGB}{209,241,232}      % d1f1e8, page background (matches site)
-\definecolor{cvgray}{RGB}{255,255,255}    % white table rows, popping off the tinted page
-\definecolor{cvteal}{RGB}{15,127,104}     % 0f7f68, headings & links
-\definecolor{cvtealdark}{RGB}{10,89,68}   % 0a5944, rule accents
+% Turquoise Oasis palette (colordrop.io/palette/29291) — identical tokens to
+% the website's :root (see PALETTE.md): light mint page, white cards, dark
+% ink text, teal accent.
+\definecolor{cvbg}{RGB}{209,241,232}      % --navy   d1f1e8, page background
+\definecolor{cvcard}{RGB}{255,255,255}    % --navy-card, white surfaces
+\definecolor{cvink}{RGB}{8,40,31}         % --white  08281f, primary text (dark ink)
+\definecolor{cvmuted}{RGB}{62,109,96}     % --muted  3e6d60, secondary text
+\definecolor{cvaccent}{RGB}{11,111,88}    % --gold   0b6f58, links / eyebrows / accents
+\definecolor{cvaccent2}{RGB}{40,161,141}  % --wood-light 28a18d, secondary accent
+\definecolor{cvborder}{RGB}{8,40,31}      % use at low opacity for hairlines
+\definecolor{cvhairline}{RGB}{200,230,222} % faint mint-gray table dividers
 \pagecolor{cvbg}
+\color{cvink}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
@@ -33,55 +57,33 @@ PREAMBLE = r"""\documentclass[10.5pt]{article}
 \raggedbottom
 \renewcommand{\arraystretch}{1}
 
-\newcommand{\link}[2]{\href{#1}{\color{cvteal}\uline{#2}}}
-\newcommand{\linkurl}[1]{\href{#1}{\color{cvteal}\uline{\seqsplit{#1}}}}
-\newcommand{\linkurltext}[2]{\href{#1}{\color{cvteal}\uline{\seqsplit{#2}}}}
+\newcommand{\link}[2]{\href{#1}{\color{cvaccent}\uline{#2}}}
+\newcommand{\linkurl}[1]{\href{#1}{\color{cvaccent}\uline{\seqsplit{#1}}}}
+\newcommand{\linkurltext}[2]{\href{#1}{\color{cvaccent}\uline{\seqsplit{#2}}}}
 
-\newcommand{\cvsection}[1]{%
-  \Needspace{4\baselineskip}\par\vspace{12pt}{\fontsize{17}{20}\selectfont\bfseries\color{cvteal} #1}\par
-  {\color{cvtealdark}\rule{\linewidth}{1.1pt}}\par\vspace{5pt}%
+% Section header: short accent bar + small uppercase eyebrow + big serif
+% heading, mirroring the website's .page-header / .section-heading pattern.
+\newcommand{\cvsection}[2]{%
+  \Needspace{5\baselineskip}\par\vspace{20pt}%
+  {\color{cvaccent}\rule{40pt}{3pt}}\par\vspace{7pt}
+  {\fontsize{8.3}{10}\selectfont\bfseries\color{cvaccent} \MakeUppercase{#1}}\par\vspace{3pt}
+  {\playfairsb\fontsize{20}{24}\selectfont\color{cvink} #2}\par\vspace{9pt}%
 }
 \newcommand{\cvsubsection}[1]{%
-  \Needspace{3\baselineskip}\par\vspace{6pt}{\bfseries\color{cvtealdark} #1}\par\vspace{3pt}%
+  \Needspace{3\baselineskip}\par\vspace{9pt}{\bfseries\fontsize{10.5}{13}\selectfont\color{cvaccent} \MakeUppercase{#1}}\par\vspace{4pt}%
 }
 
-% A leading strut with zero extra height fixes minipage[t] top-alignment
-% when a minipage's content is a bare image with no text baseline: without
-% it, the image hangs upward from the reference line instead of downward.
-\newcommand{\imgtop}[1]{\strut\vspace{-\baselineskip}\par\includegraphics[width=1.05in,height=0.62in,keepaspectratio]{img/#1}}
-
-% Job-style entry: bold title line, italic subtitle line, body paragraph, logo on right
+% A single flowing entry: bold title, italic muted subtitle, body paragraph.
+% No side column, no image — text wraps and breaks across pages normally.
 \newcommand{\jobentry}[4]{%
-  \par\noindent\begin{minipage}[t]{4.9in}
-  \raggedright{\bfseries #1}\par
-  {\itshape #2}\par
-  #3
-  \end{minipage}\hfill%
-  \begin{minipage}[t]{1.2in}\raggedleft
-  \imgtop{#4}
-  \end{minipage}\par\vspace{7pt}%
-}
-\newcommand{\jobentrynologo}[3]{%
-  \par\noindent\begin{minipage}[t]{4.9in}
-  \raggedright{\bfseries #1}\par
-  {\itshape #2}\par
-  #3
-  \end{minipage}\par\vspace{7pt}%
+  \par\noindent\raggedright{\bfseries\color{cvink} #1}\par
+  {\itshape\color{cvmuted} #2}\par
+  {\color{cvink}#3}\par\vspace{9pt}%
 }
 
-% Citation-style entry: one formatted paragraph, logo on right
+% Citation-style entry: one formatted paragraph.
 \newcommand{\pubentry}[2]{%
-  \par\noindent\begin{minipage}[t]{4.9in}
-  \raggedright #1
-  \end{minipage}\hfill%
-  \begin{minipage}[t]{1.2in}\raggedleft
-  \imgtop{#2}
-  \end{minipage}\par\vspace{6pt}%
-}
-\newcommand{\pubentrynologo}[1]{%
-  \par\noindent\begin{minipage}[t]{4.9in}
-  \raggedright #1
-  \end{minipage}\par\vspace{6pt}%
+  \par\noindent\raggedright\color{cvink}#1\par\vspace{8pt}%
 }
 
 % Document has no math content, so make underscores literal everywhere
@@ -92,24 +94,15 @@ PREAMBLE = r"""\documentclass[10.5pt]{article}
 """
 
 HEADER = r"""
-{\fontsize{30}{34}\selectfont Sergio Araneda, Ph.D.}\par\vspace{2pt}
-\noindent\begin{minipage}[t]{4in}
-{\fontsize{11}{13}\selectfont sondaxius@gmail.com}\par
-{\fontsize{11}{13}\selectfont \link{https://github.com/sndxs}{github.com/sndxs}}
-\end{minipage}\hfill
-\begin{minipage}[t]{1.2in}\raggedleft
-\strut\vspace{-\baselineskip}\par\includegraphics[width=1in,keepaspectratio]{img/github.png}
-\end{minipage}
-\par\vspace{10pt}
+{\color{cvaccent}\fontsize{8.3}{10}\selectfont\bfseries \MakeUppercase{Educational Measurement \textbullet\ Validity \textbullet\ Psychometrics}}\par\vspace{7pt}
+{\playfair\fontsize{34}{38}\selectfont\color{cvink} Sergio Araneda, Ph.D.}\par\vspace{9pt}
+{\fontsize{10.5}{13}\selectfont\color{cvmuted} sondaxius@gmail.com
+\ \textbar\ \link{https://github.com/sndxs}{github.com/sndxs}}
+\par\vspace{18pt}
 
-\noindent\begin{minipage}[t]{0.9in}
-\includegraphics[width=0.7in]{img/umass_seal.png}\par\vspace{20pt}
-\includegraphics[width=0.7in]{img/uchile.jpg}
-\end{minipage}\hfill
-\begin{minipage}[t]{5.2in}
 Ph.D., Research, Educational Measurement, and Psychometrics\par
-University of Massachusetts Amherst 2019 - 2022\par\vspace{8pt}
-{\itshape The Research, Educational Measurement, and Psychometrics (REMP) program is a
+{\color{cvmuted}University of Massachusetts Amherst 2019 -- 2022}\par\vspace{8pt}
+{\itshape\color{cvmuted} The Research, Educational Measurement, and Psychometrics (REMP) program is a
 research-focused doctoral program in the College of Education, combining coursework in
 psychometric theory (classical test theory, item response theory, and generalizability
 theory), multivariate statistics, and research design with hands-on involvement in live
@@ -120,19 +113,18 @@ educational measurement and psychometrics in the United States, with graduates g
 research and leadership roles across testing companies, universities, and assessment
 organizations.}\par\vspace{14pt}
 Mathematical Civil Engineer\par
-Universidad de Chile 2005 -- 2013\par\vspace{8pt}
-{\itshape A mathematical civil engineer has 2 years in a common program with the rest of other
+{\color{cvmuted}Universidad de Chile 2005 -- 2013}\par\vspace{8pt}
+{\itshape\color{cvmuted} A mathematical civil engineer has 2 years in a common program with the rest of other
 engineering programs and 4 years of specific training in modern mathematics:
 Functional analysis, Measure theory, Partial Differential Equations, Stochastic
 processes, Optimization (linear, non-linear, discrete, optimal control), Discrete
 Mathematics, Numerical Methods, Information theory, and Statistics. It's a strong
 program, one of the most prestigious programs in Applied Math in Latin America.}
-\end{minipage}
 \par\vspace{4pt}
 """
 
 WORK_EXPERIENCE = r"""
-\cvsection{Work Experience}
+\cvsection{Career}{Work Experience}
 
 \jobentry{Research Scientist, Caveon; July 2023 -- Present (3Y) --- Part-time since July 2026}
 {Remote, done from New York City, NY, US}
@@ -159,7 +151,7 @@ the Chilean admission system.}
 {demre.png}
 
 \newpage
-\cvsection{Internships}
+\cvsection{Early Career}{Internships}
 
 \jobentry{Caveon, March 2022 -- August 2022}
 {Remote, done from Amherst, MA, US}
@@ -177,7 +169,7 @@ in the agile team was to provide a logic for feedback generation for audio cues 
 specifically using filler words and effective uses of pauses.}
 {ets_ai.png}
 
-\cvsection{Other previous experiences in Finances}
+\cvsection{Before Measurement}{Other Previous Experiences in Finances}
 
 \jobentry{Datamart Murex Consultant, CPQi; August 2018 -- July 2019}
 {In-person Jersey City, NJ, US}
@@ -206,27 +198,30 @@ related to investment recommendations and regulatory requirements.}
 
 SKILLS = r"""
 \newpage
-\cvsection{Technical Skills \& Languages}
+\cvsection{Toolkit}{Technical Skills \& Languages}
 
-\noindent\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{0.55in} p{1.95in} X@{}}
-\rowcolor{cvgray}\includegraphics[height=0.42in]{img/python.png} & \textbf{Python} & Working with Python since 2013. Machine learning $\rightarrow$ Pytorch. \\[7pt]
-\rowcolor{cvgray}\includegraphics[height=0.42in]{img/rlang.png} & \textbf{R} & Working with R since 2018. \\[7pt]
-\rowcolor{cvgray}\includegraphics[height=0.42in]{img/code_icon.png} & \textbf{Other scripting languages} & SQL, MATLAB, Java, XML, XSL, UNIX, Stata, Git. \\[7pt]
-\rowcolor{cvgray}\includegraphics[height=0.42in]{img/irt.png} & \textbf{Psychometric \& Statistical Software} & FlexMIRT, MPlus. \\[7pt]
-\rowcolor{cvgray}\includegraphics[height=0.42in]{img/optimization.png} & \textbf{Optimization Software} & Gurobi, Cplex. \\[7pt]
+\noindent\arrayrulecolor{cvhairline}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{cvink}}p{2in} >{\color{cvmuted}}X@{}}
+\hline\\[-9pt]
+Python & Working with Python since 2013. Machine learning $\rightarrow$ Pytorch. \\[9pt]\hline\\[-9pt]
+R & Working with R since 2018. \\[9pt]\hline\\[-9pt]
+Other scripting languages & SQL, MATLAB, Java, XML, XSL, UNIX, Stata, Git. \\[9pt]\hline\\[-9pt]
+Psychometric \& Statistical Software & FlexMIRT, MPlus. \\[9pt]\hline\\[-9pt]
+Optimization Software & Gurobi, Cplex. \\[9pt]\hline
 \end{tabularx}
 
-\vspace{10pt}
+\vspace{16pt}
 
-\noindent\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{0.55in} p{1.95in} X@{}}
-\rowcolor{cvgray}\includegraphics[height=0.42in]{img/flag_usa.png} & \textbf{English} & Advanced reading level, Advanced oral level, Advanced writing level. TOEFL iBT score 102/120 \\[7pt]
-\rowcolor{cvgray}\includegraphics[height=0.42in]{img/flag_france.png} & \textbf{French} & Advanced reading level, Intermediate oral level, Intermediate writing level. \\[7pt]
-\rowcolor{cvgray}\includegraphics[height=0.42in]{img/flag_mexico.png} & \textbf{Spanish} & Native Language. \\[7pt]
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{cvink}}p{2in} >{\color{cvmuted}}X@{}}
+\hline\\[-9pt]
+English & Advanced reading level, Advanced oral level, Advanced writing level. TOEFL iBT score 102/120 \\[9pt]\hline\\[-9pt]
+French & Advanced reading level, Intermediate oral level, Intermediate writing level. \\[9pt]\hline\\[-9pt]
+Spanish & Native Language. \\[9pt]\hline
 \end{tabularx}
 """
 
 TEACHING = r"""
-\cvsection{Teaching Experience}
+\cvsection{Education \& Teaching}{Teaching Experience}
 
 \jobentry{First Year Seminar (FYS) Principles of game design applied in Education, Fall 2021}
 {College of Education, University of Massachusetts Amherst}
@@ -257,11 +252,13 @@ applications in the classroom for K-12 math teaching.}
 
 PUB_HEADER = r"""
 \newpage
-\cvsection{Publications}
+\cvsection{Research Output}{Publications}
 
-\noindent\begin{tabularx}{\linewidth}{@{}p{1.3in} p{2in} X@{}}
-\rowcolor{cvgray}\textbf{ResearchGate} & Profile: \link{https://www.researchgate.net/profile/Sergio-Araneda?ev=hdr_xprf}{ResearchGate profile} & \textbf{Research Interest Score}: 94.4 \\[5pt]
-\rowcolor{cvgray}\textbf{Google Scholar} & Profile: \link{https://scholar.google.com/citations?user=_Q0VXwsAAAAJ}{Google Scholar profile} & \textbf{Number of Citations}: 31 \\[5pt]
+\noindent\arrayrulecolor{cvhairline}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{cvink}}p{1.3in} p{2.1in} >{\raggedleft\arraybackslash}X@{}}
+\hline\\[-9pt]
+ResearchGate & Profile: \link{https://www.researchgate.net/profile/Sergio-Araneda?ev=hdr_xprf}{ResearchGate profile} & \textbf{\color{cvink}Research Interest Score: 94.4} \\[9pt]\hline\\[-9pt]
+Google Scholar & Profile: \link{https://scholar.google.com/citations?user=_Q0VXwsAAAAJ}{Google Scholar profile} & \textbf{\color{cvink}Number of Citations: 31} \\[9pt]\hline
 \end{tabularx}
 
 \cvsubsection{Peer Reviewed Journals}
@@ -450,7 +447,7 @@ def build():
     for text, logo in NEWSPAPERS:
         parts.append(f"\\pubentry{{{text}}}{{{logo}}}\n")
 
-    parts.append(r"\cvsection{Presentations in Conferences}" + "\n")
+    parts.append(r"\cvsection{Speaking \& Participation}{Presentations in Conferences}" + "\n")
     parts.append(r"\cvsubsection{Organized Sessions}" + "\n")
     for text, logo in CONF_ORGANIZED:
         parts.append(f"\\pubentry{{{text}}}{{{logo}}}\n")
@@ -473,7 +470,7 @@ def build():
     for text, logo in CONF_DISCUSSANT:
         parts.append(f"\\pubentry{{{text}}}{{{logo}}}\n")
 
-    parts.append(r"\cvsection{Social Media \& Other Virtual Venues}" + "\n")
+    parts.append(r"\cvsection{Online Presence}{Social Media \& Other Virtual Venues}" + "\n")
     parts.append(r"\cvsubsection{Individual Presentations}" + "\n")
     for text, logo in SOCIAL_INDIVIDUAL:
         parts.append(f"\\pubentry{{{text}}}{{{logo}}}\n")
@@ -487,7 +484,7 @@ def build():
     for title, subtitle, body, logo in SOCIAL_SERIES:
         parts.append(series_entry(title, subtitle, body, logo))
 
-    parts.append(r"\cvsection{Volunteer Work and Public Engagement}" + "\n")
+    parts.append(r"\cvsection{Service}{Volunteer Work and Public Engagement}" + "\n")
     for title, subtitle, body, logo in VOLUNTEER:
         parts.append(series_entry(title, subtitle, body, logo))
 
