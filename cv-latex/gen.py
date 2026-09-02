@@ -81,9 +81,12 @@ PREAMBLE = r"""\documentclass[10.5pt]{article}
   {\color{cvink}#3}\par\vspace{9pt}%
 }
 
-% Citation-style entry: one formatted paragraph.
+% Citation-style entry: one formatted paragraph with hanging indent, so
+% wrapped lines tuck under the author names instead of restarting flush
+% left — standard bibliography convention, and it gives a dense list of
+% citations a visual spine to scan down instead of a wall of text.
 \newcommand{\pubentry}[2]{%
-  \par\noindent\raggedright\color{cvink}#1\par\vspace{8pt}%
+  \par\noindent\hangindent=14pt\hangafter=1\raggedright\color{cvink}#1\par\vspace{9pt}%
 }
 
 % Document has no math content, so make underscores literal everywhere
@@ -91,6 +94,11 @@ PREAMBLE = r"""\documentclass[10.5pt]{article}
 \catcode`\_=12\relax
 
 \begin{document}
+% A touch more leading than default — the website's body copy is airy
+% (line-height 1.7-1.8 in the CSS); dense single-spaced academic-CV text
+% would clash with that. This isn't as loose as the site (a 10-page CV
+% can't afford it) but it's noticeably more open than default LaTeX.
+\setstretch{1.09}
 """
 
 HEADER = r"""
@@ -120,13 +128,14 @@ Functional analysis, Measure theory, Partial Differential Equations, Stochastic
 processes, Optimization (linear, non-linear, discrete, optimal control), Discrete
 Mathematics, Numerical Methods, Information theory, and Statistics. It's a strong
 program, one of the most prestigious programs in Applied Math in Latin America.}
-\par\vspace{4pt}
+\par\vspace{16pt}
+{\color{cvhairline}\rule{\linewidth}{1pt}}
 """
 
 WORK_EXPERIENCE = r"""
 \cvsection{Career}{Work Experience}
 
-\jobentry{Research Scientist, Caveon; July 2023 -- Present (3Y) --- Part-time since July 2026}
+\jobentry{Research Scientist, Caveon {\normalfont\color{cvmuted}--- July 2023 -- Present (3Y), part-time since July 2026}}
 {Remote, done from New York City, NY, US}
 {General work on research topics of relevance for Caveon, including Randomly
 Parallel Testing and the use of Large Language Models (LLM) in combination with
@@ -134,14 +143,14 @@ Caveon's technologies like SmartItems\texttrademark. Participation in conference
 Collaboration with members of the company doing Research and preparing papers.}
 {caveon.png}
 
-\jobentry{Associate Psychometrician, College Board; October 2022 -- April 2023 (7M)}
+\jobentry{Associate Psychometrician, College Board {\normalfont\color{cvmuted}--- October 2022 -- April 2023 (7M)}}
 {Remote, done from New York City, NY, US}
 {I participated in the work of the PsyTech Team in the Psychometrics division at
 College Board. Part of my duties corresponded to Research related to Item
 Parameter Drift and Automatic Essay Scoring for the SAT Essay test.}
 {collegeboard.png}
 
-\jobentry{Research Assistant, Departamento de Medici\'on y Registro Educacional (DEMRE); August 2017 -- December 2018 (1Y 4M)}
+\jobentry{Research Assistant, Departamento de Medici\'on y Registro Educacional (DEMRE) {\normalfont\color{cvmuted}--- August 2017 -- December 2018 (1Y 4M)}}
 {In-person Santiago, Chile; and Remote, done from Jersey City, NJ, US}
 {DEMRE is a department under Universidad de Chile that specializes in educational
 measurement. It is responsible for designing the Prueba de Selecci\'on Universitaria
@@ -153,7 +162,7 @@ the Chilean admission system.}
 \newpage
 \cvsection{Early Career}{Internships}
 
-\jobentry{Caveon, March 2022 -- August 2022}
+\jobentry{Caveon {\normalfont\color{cvmuted}--- March 2022 -- August 2022}}
 {Remote, done from Amherst, MA, US}
 {I worked constructing ``Smart-items,'' a technology developed by the company for Automatic
 Item Generation. I used my programming skills to create Smart-items of different types. I used
@@ -161,7 +170,7 @@ Natural Language Processing as well to generate Correct-Incorrect statements aut
 from a text.}
 {caveon.png}
 
-\jobentry{ETS AI Labs, June 2021 -- August 2021}
+\jobentry{ETS AI Labs {\normalfont\color{cvmuted}--- June 2021 -- August 2021}}
 {Remote, done from Amherst, MA, US}
 {I worked as a summer intern in one of the projects of the AI labs at ETS, an app named
 ``Authentic,'' made to help early career professionals to improve their interview skills. My role
@@ -171,7 +180,7 @@ specifically using filler words and effective uses of pauses.}
 
 \cvsection{Before Measurement}{Other Previous Experiences in Finances}
 
-\jobentry{Datamart Murex Consultant, CPQi; August 2018 -- July 2019}
+\jobentry{Datamart Murex Consultant, CPQi {\normalfont\color{cvmuted}--- August 2018 -- July 2019}}
 {In-person Jersey City, NJ, US}
 {Working as an external consultant for RBC (Royal Bank of Canada) in a Murex
 implementation project for Rates and their internal reports. The work required
@@ -179,7 +188,7 @@ intensive SQL programming and proficiency in Murex, a software used in the finan
 industry for derivatives management.}
 {cpqi.png}
 
-\jobentry{Back-Office Functional Consultant, Murex; September 2014 -- February 2017}
+\jobentry{Back-Office Functional Consultant, Murex {\normalfont\color{cvmuted}--- September 2014 -- February 2017}}
 {In-person Santiago, Chile}
 {Murex is a French software company that created the software MX.3, a platform
 financial institutions use to support the operation of financial products such as
@@ -189,7 +198,7 @@ related to Post-trade workflow, Accounting, Confirmation documents, Settlement,
 Netting, pre-trade, and reporting (for Back-Office purposes).}
 {murex.png}
 
-\jobentry{Quantitative Analyst, Vision advisors; September 2013 -- August 2014}
+\jobentry{Quantitative Analyst, Vision advisors {\normalfont\color{cvmuted}--- September 2013 -- August 2014}}
 {In-person Santiago, Chile}
 {I worked as an analyst doing reports for institutional clients of our office, mostly
 related to investment recommendations and regulatory requirements.}
@@ -223,7 +232,7 @@ Spanish & Native Language. \\[9pt]\hline
 TEACHING = r"""
 \cvsection{Education \& Teaching}{Teaching Experience}
 
-\jobentry{First Year Seminar (FYS) Principles of game design applied in Education, Fall 2021}
+\jobentry{First Year Seminar (FYS) Principles of game design applied in Education {\normalfont\color{cvmuted}--- Fall 2021}}
 {College of Education, University of Massachusetts Amherst}
 {This course covers core principles of game design, focusing on best practices and
 methodologies for creating engaging and effective games. Emphasis is placed on the
@@ -232,19 +241,19 @@ how game mechanics and design principles can enhance learning experiences. I cre
 course.}
 {umass_seal.png}
 
-\jobentry{Probability and Statistics, Fall 2012}
+\jobentry{Probability and Statistics {\normalfont\color{cvmuted}--- Fall 2012}}
 {Facultad de Ciencias F\'isicas y Matem\'aticas, Universidad de Chile}
 {This course covers introductory topics to probability, and some initial topics related to
 statistics.}
 {uchile.jpg}
 
-\jobentry{Mathematical Reasoning in Elementary School, Fall 2011}
+\jobentry{Mathematical Reasoning in Elementary School {\normalfont\color{cvmuted}--- Fall 2011}}
 {Facultad de Ciencias F\'isicas y Matem\'aticas, Universidad de Chile}
 {This course covers an introduction to the concept of mathematical reasoning and its
 applications in the classroom for K-12 math teaching.}
 {uchile.jpg}
 
-\jobentry{Linear Algebra, Fall 2008}
+\jobentry{Linear Algebra {\normalfont\color{cvmuted}--- Fall 2008}}
 {Facultad de Ciencias F\'isicas y Matem\'aticas, Universidad de Chile}
 {This course covers an introduction to linear algebra for engineering students.}
 {uchile.jpg}
@@ -282,7 +291,8 @@ response process data. \textit{Education Sciences}.
 def book_chapters():
     return r"""\cvsubsection{Book Chapters}
 \pubentry{Sireci, S. G., Araneda, S., \& Su\'arez-\'Alvarez, J. (2026). The Impact of Artificial Intelligence on
-Validity and Test Validation [Chapter]. \link{https://www.researchgate.net/publication/409290173_The_Impact_of_Artificial_Intelligence_on_Validity_and_Test_Validation}{https://www.researchgate.net/publication/409290173_The_Impact_of_Artificial_Intelligence_on_Validity_and_Test_Validation}}
+Validity and Test Validation. In \textit{The Role of AI in Assessment} (pp.\ 312--336). Routledge.
+\linkurl{https://doi.org/10.4324/9781003621522-13}}
 {researchgate.png}
 \pubentry{Sireci, S. G., Araneda, S., \& McIntee, K. (2025). Social justice in educational assessment: A
 blueprint for the future. \textit{Handbook for Assessment in the Service of Learning}, 2.}
@@ -290,8 +300,8 @@ blueprint for the future. \textit{Handbook for Assessment in the Service of Lear
 """
 
 PREPRINTS = [
-("Araneda, S. (2026). \\textit{The Multiple Crises of Validity Theory in the Age of AI} [Preprint]. \\link{https://www.researchgate.net/publication/408940607_The_Multiple_Crises_of_Validity_Theory_in_the_Age_of_AI}{https://www.researchgate.net/publication/408940607_The_Multiple_Crises_of_Validity_Theory_in_the_Age_of_AI}", "researchgate.png"),
-("Araneda, S. (2026). \\textit{Minimum Test Length for Psychometric Parallelism in Randomized Tests} [Preprint]. \\link{https://www.researchgate.net/publication/411161952_Minimum_Test_Length_for_Psychometric_Parallelism_in_Randomized_Tests}{https://www.researchgate.net/publication/411161952_Minimum_Test_Length_for_Psychometric_Parallelism_in_Randomized_Tests}", "researchgate.png"),
+("Araneda, S. (2026). \\textit{The Multiple Crises of Validity Theory in the Age of AI} [Preprint]. \\linkurl{https://doi.org/10.13140/RG.2.2.32698.15048}", "researchgate.png"),
+("Araneda, S. (2026). \\textit{Minimum Test Length for Psychometric Parallelism in Randomized Tests} [Preprint]. \\linkurl{https://doi.org/10.13140/RG.2.2.29461.28644}", "researchgate.png"),
 ("Araneda, S., \\& Sireci, S. G. (2026). \\textit{Making the case for an experiential approach to test validation} [Preprint]. \\link{https://doi.org/10.13140/RG.2.2.28455.44968}{https://doi.org/10.13140/RG.2.2.28455.44968}", "researchgate.png"),
 ("Toton, S., Araneda, S., Farr, A., \\& Huynh, T. (2026). \\textit{Understanding the patterns of LLM-generated responses of multiple-choice questions} [Preprint]. \\link{https://doi.org/10.13140/RG.2.2.33838.06728}{https://doi.org/10.13140/RG.2.2.33838.06728}", "researchgate.png"),
 ("Araneda, S. (2026). \\textit{Factor analysis in randomly parallel tests: Limitations and emerging solutions} [Pre-print]. \\link{https://doi.org/10.13140/RG.2.2.12857.53609}{https://doi.org/10.13140/RG.2.2.12857.53609}", "researchgate.png"),
@@ -302,7 +312,7 @@ PREPRINTS = [
 ("Foster, D., Foster, C., Marder, A., \\& Araneda, S. (2025). \\textit{Evaluating the Test Security Benefits of Randomly Parallel Tests: Protecting Against Pre-Knowledge} [Pre-print]. \\link{https://doi.org/10.13140/RG.2.2.31968.75520}{https://doi.org/10.13140/RG.2.2.31968.75520}", "researchgate.png"),
 ("Araneda, S., Sireci, S. G., Cruz, E. C., \\& Serrano, F. M. (2025). \\textit{A Conceptual Framework for Test-Taker Experience in Educational Testing} [Pre-print]. \\link{https://doi.org/10.13140/RG.2.2.13395.85282}{https://doi.org/10.13140/RG.2.2.13395.85282}", "researchgate.png"),
 ("Araneda, S. (2025) \\textit{Tests as Socio-Technical Artifacts: First Thoughts on its Implications for Validity Theory} [Pre-print]. \\link{https://philpapers.org/rec/ARATAS-5}{https://philpapers.org/rec/ARATAS-5}", "philpapers.png"),
-("Araneda, S. (2025). \\textit{Tests as Socio-Technical Artifacts: Defining Validity as a Theory of Artifact Functioning} [Preprint]. \\link{https://www.researchgate.net/publication/398710886_Tests_as_Socio-Technical_Artifacts_Defining_Validity_as_a_Theory_of_Artifact_Functioning}{https://www.researchgate.net/publication/398710886_Tests_as_Socio-Technical_Artifacts_Defining_Validity_as_a_Theory_of_Artifact_Functioning}", "researchgate.png"),
+("Araneda, S. (2025). \\textit{Tests as Socio-Technical Artifacts: Defining Validity as a Theory of Artifact Functioning} [Preprint]. \\linkurl{https://doi.org/10.13140/RG.2.2.18546.98249}", "researchgate.png"),
 ]
 
 WHITEPAPERS = [
@@ -412,11 +422,11 @@ def series_entry(title, subtitle, body, logo):
     return f"\\jobentry{{{title}}}{{{subtitle}}}{{{body}}}{{{logo}}}\n"
 
 SOCIAL_SERIES = [
-("Webinars Validez, Fall 2024 -- Spring 2025", "Foro Chileno de Profesionales en Evaluacion Educacional FEVED",
+("Webinars Validez {\\normalfont\\color{cvmuted}--- Fall 2024 -- Spring 2025}", "Foro Chileno de Profesionales en Evaluacion Educacional FEVED",
  "This series covered interviews with different Spanish-speaker experts in Educational Assessment about the concept of Validity. The series is published on my personal Youtube Channel \\link{https://www.youtube.com/@elsheshin}{https://www.youtube.com/@elsheshin}", "feved.png"),
-("NCME GSIC Standards Study Group, Fall 2021, Spring 2022 and Summer 2022", "Graduate Student Issues Committee at NCME",
+("NCME GSIC Standards Study Group {\\normalfont\\color{cvmuted}--- Fall 2021, Spring 2022 and Summer 2022}", "Graduate Student Issues Committee at NCME",
  "This series covered discussion sessions between students and Q\\&A with experts about each of the chapters in the Standards for Educational and Psychological Measurement. This series can be found at the NCME website and youtube channel \\link{https://www.ncme.org/students/student-programs/standards-study-group}{https://www.ncme.org/students/student-programs/standards-study-group}", "ncme.png"),
-("Entrevistas FEVED, Spring 2022", "Foro Chileno de Profesionales en Evaluacion Educacional FEVED",
+("Entrevistas FEVED {\\normalfont\\color{cvmuted}--- Spring 2022}", "Foro Chileno de Profesionales en Evaluacion Educacional FEVED",
  "This series covered interviews with different experts in Educational Assessment in Chile. The series is published on the FEVED Youtube Channel \\link{https://www.youtube.com/@feved-forochilenoevaluacion}{https://www.youtube.com/@feved-forochilenoevaluacion}", "feved.png"),
 ]
 
