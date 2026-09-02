@@ -105,21 +105,17 @@ HEADER = r"""
 {\color{cvaccent}\fontsize{8.3}{10}\selectfont\bfseries \MakeUppercase{Educational Measurement \textbullet\ Validity \textbullet\ Psychometrics}}\par\vspace{7pt}
 {\playfair\fontsize{34}{38}\selectfont\color{cvink} Sergio Araneda, Ph.D.}\par\vspace{9pt}
 {\fontsize{10.5}{13}\selectfont\color{cvmuted} sondaxius@gmail.com
-\ \textbar\ \link{https://github.com/sndxs}{github.com/sndxs}}
+\ \textbar\ \link{https://github.com/sndxs}{github.com/sndxs}
+\ \textbar\ Updated September 2026}
 \par\vspace{18pt}
 
 Ph.D., Research, Educational Measurement, and Psychometrics\par
 {\color{cvmuted}University of Massachusetts Amherst 2019 -- 2022}\par\vspace{8pt}
 {\itshape\color{cvmuted} The Research, Educational Measurement, and Psychometrics (REMP) program is a
-research-focused doctoral program in the College of Education, combining coursework in
-psychometric theory (classical test theory, item response theory, and generalizability
-theory), multivariate statistics, and research design with hands-on involvement in live
-assessment work through the Center for Educational Assessment. Students collaborate with
-faculty and testing organizations on validity, item development, and measurement
-innovation from early in the program. It's one of the leading doctoral programs in
-educational measurement and psychometrics in the United States, with graduates going on to
-research and leadership roles across testing companies, universities, and assessment
-organizations.}\par\vspace{14pt}
+research-focused doctoral program in the College of Education, combining psychometric theory
+(classical test theory, item response theory, generalizability theory) with hands-on
+assessment work through the Center for Educational Assessment. It's one of the leading
+doctoral programs in educational measurement and psychometrics in the United States.}\par\vspace{14pt}
 Mathematical Civil Engineer\par
 {\color{cvmuted}Universidad de Chile 2005 -- 2013}\par\vspace{8pt}
 {\itshape\color{cvmuted} A mathematical civil engineer has 2 years in a common program with the rest of other
@@ -266,8 +262,8 @@ PUB_HEADER = r"""
 \noindent\arrayrulecolor{cvhairline}
 \begin{tabularx}{\linewidth}{@{}>{\bfseries\color{cvink}}p{1.3in} p{2.1in} >{\raggedleft\arraybackslash}X@{}}
 \hline\\[-9pt]
-ResearchGate & Profile: \link{https://www.researchgate.net/profile/Sergio-Araneda?ev=hdr_xprf}{ResearchGate profile} & \textbf{\color{cvink}Research Interest Score: 94.4} \\[9pt]\hline\\[-9pt]
-Google Scholar & Profile: \link{https://scholar.google.com/citations?user=_Q0VXwsAAAAJ}{Google Scholar profile} & \textbf{\color{cvink}Number of Citations: 31} \\[9pt]\hline
+ResearchGate & Profile: \link{https://www.researchgate.net/profile/Sergio-Araneda?ev=hdr_xprf}{ResearchGate profile} & \textbf{\color{cvink}Research Interest Score: 107.3} \\[9pt]\hline\\[-9pt]
+Google Scholar & Profile: \link{https://scholar.google.com/citations?user=_Q0VXwsAAAAJ}{Google Scholar profile} & \textbf{\color{cvink}Number of Citations: 35} \\[9pt]\hline
 \end{tabularx}
 
 \cvsubsection{Peer Reviewed Journals}
@@ -480,6 +476,7 @@ def build():
     for text, logo in CONF_DISCUSSANT:
         parts.append(f"\\pubentry{{{text}}}{{{logo}}}\n")
 
+    parts.append(r"\newpage" + "\n")
     parts.append(r"\cvsection{Online Presence}{Social Media \& Other Virtual Venues}" + "\n")
     parts.append(r"\cvsubsection{Individual Presentations}" + "\n")
     for text, logo in SOCIAL_INDIVIDUAL:
@@ -494,6 +491,7 @@ def build():
     for title, subtitle, body, logo in SOCIAL_SERIES:
         parts.append(series_entry(title, subtitle, body, logo))
 
+    parts.append(r"\newpage" + "\n")
     parts.append(r"\cvsection{Service}{Volunteer Work and Public Engagement}" + "\n")
     for title, subtitle, body, logo in VOLUNTEER:
         parts.append(series_entry(title, subtitle, body, logo))
