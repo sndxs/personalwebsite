@@ -21,9 +21,11 @@ PREAMBLE = r"""\documentclass[10.5pt]{article}
 \usepackage{needspace}
 
 % Turquoise Oasis palette (colordrop.io/palette/29291) — shared with the website
-\definecolor{cvgray}{RGB}{209,241,232}    % d1f1e8, table row tint
+\definecolor{cvbg}{RGB}{209,241,232}      % d1f1e8, page background (matches site)
+\definecolor{cvgray}{RGB}{255,255,255}    % white table rows, popping off the tinted page
 \definecolor{cvteal}{RGB}{15,127,104}     % 0f7f68, headings & links
 \definecolor{cvtealdark}{RGB}{10,89,68}   % 0a5944, rule accents
+\pagecolor{cvbg}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
@@ -106,7 +108,17 @@ HEADER = r"""
 \end{minipage}\hfill
 \begin{minipage}[t]{5.2in}
 Ph.D., Research, Educational Measurement, and Psychometrics\par
-University of Massachusetts Amherst 2019 - 2022\par\vspace{14pt}
+University of Massachusetts Amherst 2019 - 2022\par\vspace{8pt}
+{\itshape The Research, Educational Measurement, and Psychometrics (REMP) program is a
+research-focused doctoral program in the College of Education, combining coursework in
+psychometric theory (classical test theory, item response theory, and generalizability
+theory), multivariate statistics, and research design with hands-on involvement in live
+assessment work through the Center for Educational Assessment. Students collaborate with
+faculty and testing organizations on validity, item development, and measurement
+innovation from early in the program. It's one of the leading doctoral programs in
+educational measurement and psychometrics in the United States, with graduates going on to
+research and leadership roles across testing companies, universities, and assessment
+organizations.}\par\vspace{14pt}
 Mathematical Civil Engineer\par
 Universidad de Chile 2005 -- 2013\par\vspace{8pt}
 {\itshape A mathematical civil engineer has 2 years in a common program with the rest of other
@@ -146,6 +158,7 @@ assistant in a project evaluating the use of one score named ``ranking de notas'
 the Chilean admission system.}
 {demre.png}
 
+\newpage
 \cvsection{Internships}
 
 \jobentry{Caveon, March 2022 -- August 2022}
@@ -192,6 +205,7 @@ related to investment recommendations and regulatory requirements.}
 """
 
 SKILLS = r"""
+\newpage
 \cvsection{Technical Skills \& Languages}
 
 \noindent\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{0.55in} p{1.95in} X@{}}
@@ -242,6 +256,7 @@ applications in the classroom for K-12 math teaching.}
 """
 
 PUB_HEADER = r"""
+\newpage
 \cvsection{Publications}
 
 \noindent\begin{tabularx}{\linewidth}{@{}p{1.3in} p{2in} X@{}}
