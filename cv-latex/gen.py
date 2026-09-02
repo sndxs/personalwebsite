@@ -431,11 +431,11 @@ def series_entry(title, subtitle, body, logo):
 
 SOCIAL_SERIES = [
 ("Webinars Validez {\\normalfont\\color{cvmuted}--- Fall 2024 -- Spring 2025}", "Foro Chileno de Profesionales en Evaluacion Educacional FEVED",
- "This series covered interviews with different Spanish-speaker experts in Educational Assessment about the concept of Validity. The series is published on my personal Youtube Channel \\link{https://www.youtube.com/@elsheshin}{https://www.youtube.com/@elsheshin}", "feved.png"),
+ "This series covered interviews with different Spanish-speaker experts in Educational Assessment about the concept of Validity. The series is published on my personal Youtube Channel \\link{https://www.youtube.com/@elsheshin}{https://www.youtube.com/@elsheshin}. Full list of episodes: \\link{https://sndxs.github.io/personalwebsite/\\#webinars-validez}{sndxs.github.io/personalwebsite/\\#webinars-validez}", "feved.png"),
 ("NCME GSIC Standards Study Group {\\normalfont\\color{cvmuted}--- Fall 2021, Spring 2022 and Summer 2022}", "Graduate Student Issues Committee at NCME",
- "This series covered discussion sessions between students and Q\\&A with experts about each of the chapters in the Standards for Educational and Psychological Measurement. This series can be found at the NCME website and youtube channel \\link{https://www.ncme.org/students/student-programs/standards-study-group}{https://www.ncme.org/students/student-programs/standards-study-group}", "ncme.png"),
+ "This series covered discussion sessions between students and Q\\&A with experts about each of the chapters in the Standards for Educational and Psychological Measurement. This series can be found at the NCME website and youtube channel \\link{https://www.ncme.org/students/student-programs/standards-study-group}{https://www.ncme.org/students/student-programs/standards-study-group}. Full list of sessions: \\link{https://sndxs.github.io/personalwebsite/\\#standards-study-group}{sndxs.github.io/personalwebsite/\\#standards-study-group}", "ncme.png"),
 ("Entrevistas FEVED {\\normalfont\\color{cvmuted}--- Spring 2022}", "Foro Chileno de Profesionales en Evaluacion Educacional FEVED",
- "This series covered interviews with different experts in Educational Assessment in Chile. The series is published on the FEVED Youtube Channel \\link{https://www.youtube.com/@feved-forochilenoevaluacion}{https://www.youtube.com/@feved-forochilenoevaluacion}", "feved.png"),
+ "This series covered interviews with different experts in Educational Assessment in Chile. The series is published on the FEVED Youtube Channel \\link{https://www.youtube.com/@feved-forochilenoevaluacion}{https://www.youtube.com/@feved-forochilenoevaluacion}. Full list of episodes: \\link{https://sndxs.github.io/personalwebsite/\\#entrevistas-feved}{sndxs.github.io/personalwebsite/\\#entrevistas-feved}", "feved.png"),
 ]
 
 VOLUNTEER = [
