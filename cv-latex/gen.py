@@ -519,6 +519,14 @@ def build():
     text = re.sub(r"\\link\{([^{}]+)\}\{([^{}]+)\}", collapse, text)
     return text
 
-with open("main.tex", "w", encoding="utf-8") as f:
-    f.write(build())
-print("wrote main.tex")
+import sys
+if "--white" in sys.argv:
+    # Print-friendly variant: identical layout, pure white page instead of mint.
+    out, text = "main-white.tex", build().replace(
+        r"\definecolor{cvbg}{RGB}{209,241,232}", r"\definecolor{cvbg}{RGB}{255,255,255}")
+    text = text.replace(r"\definecolor{cvhairline}{RGB}{200,230,222}", r"\definecolor{cvhairline}{RGB}{190,215,208}")
+else:
+    out, text = "main.tex", build()
+with open(out, "w", encoding="utf-8") as f:
+    f.write(text)
+print("wrote", out)
