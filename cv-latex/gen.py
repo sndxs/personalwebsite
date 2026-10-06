@@ -116,7 +116,7 @@ HEADER = r"""
 {\playfair\fontsize{34}{38}\selectfont\color{cvink} Sergio Araneda, Ph.D.}\par\vspace{9pt}
 {\fontsize{10.5}{13}\selectfont\color{cvmuted} sondaxius@gmail.com
 \ \textbar\ \link{https://github.com/sndxs}{github.com/sndxs}
-\ \textbar\ Updated September 2026}
+\ \textbar\ Updated October 2026}
 \par\vspace{18pt}
 
 Ph.D., Research, Educational Measurement, and Psychometrics\par
@@ -308,6 +308,7 @@ blueprint for the future. \textit{Handbook for Assessment in the Service of Lear
 """
 
 PREPRINTS = [
+("Araneda, S. (2026). \\textit{Tests as Socio-Technical Artifacts: A Taxonomy for Invalidity Hypotheses} [Preprint]. \\linkurl{https://doi.org/10.13140/RG.2.2.33888.65285}", "researchgate.png"),
 ("Araneda, S. (2026). \\textit{The Multiple Crises of Validity Theory in the Age of AI} [Preprint]. \\linkurl{https://doi.org/10.13140/RG.2.2.32698.15048}", "researchgate.png"),
 ("Araneda, S. (2026). \\textit{Minimum Test Length for Psychometric Parallelism in Randomized Tests} [Preprint]. \\linkurl{https://doi.org/10.13140/RG.2.2.29461.28644}", "researchgate.png"),
 ("Araneda, S., \\& Sireci, S. G. (2026). \\textit{Making the case for an experiential approach to test validation} [Preprint]. \\link{https://doi.org/10.13140/RG.2.2.28455.44968}{https://doi.org/10.13140/RG.2.2.28455.44968}", "researchgate.png"),
@@ -345,6 +346,7 @@ NEWSPAPERS = [
 ]
 
 CONF_ORGANIZED = [
+("Araneda, S. (Chair), Oliveri, M. E., Whitcomb, D., Wine, M., Hoffman, A., Beiting-Parrish, M., \\& McCaffrey, D. (Discussant). (2026, October 6). \\textit{Validating AI in educational testing: Challenges and future directions} [Coordinated paper session]. AIME Conference (AIME-Con), National Council on Measurement in Education (NCME), Pittsburgh, PA, United States.", "aimecon.png"),
 ("Araneda, S. (Chair), Ercikan, K., Solano-Flores, G., Dept, S., Gonthier, I., \\& Sireci, S. G. (Discussant). (2026, July 2). \\textit{Emerging challenges in the use of artificial intelligence in educational testing \\& certification} [Symposium]. International Test Commission Conference 2026, Auckland, New Zealand.", "itc_2026.png"),
 ("Araneda, S. (Chair), Padilla, J.-L., Ben\\'itez, I., Su\\'arez-\\'Alvarez, J., Solano-Flores, G., Ruiz-Primo, M. A., \\& Sireci, S. G. (Discussant). (2026, July 1). \\textit{Hispanic-American perspectives on the concept of validity} [Symposium]. International Test Commission Conference 2026, Auckland, New Zealand.", "itc_2026.png"),
 ("Araneda, S. (Organizer), Toton, S., Foster, C., Marder, A., \\& Foster, D. (Discussant). (2025, November 4). \\textit{New AI-driven threats to test security: Understanding risks and building defenses} [Organized conference session]. Conference on Test Security (COTS 2025), University of Massachusetts Amherst, Amherst, MA, United States.", "cots2025.png"),
@@ -365,6 +367,7 @@ CONF_TRAINING = [
 ]
 
 CONF_INDIVIDUAL = [
+("Araneda, S. (2026, October 6). \\textit{Tests as socio-technical artifacts: A taxonomy for invalidity hypotheses} [Conference presentation]. AIME Conference (AIME-Con), National Council on Measurement in Education (NCME), Pittsburgh, PA, United States.", "aimecon.png"),
 ("Araneda, S. (2026, July 2). \\textit{The Multiple Crises of Validity Theory in the Age of AI} [Conference presentation]. International Test Commission Conference 2026, Auckland, New Zealand. \\link{https://www.researchgate.net/publication/408184953_The_Multiple_Crises_of_Validity_Theory_in_the_Age_of_AI}{Link to Slides}", "itc_2026.png"),
 ("Araneda, S. (2026, July 1). \\textit{Making the case for an experiential approach to test design and validation} [Conference presentation]. International Test Commission Conference 2026, Auckland, New Zealand. \\link{https://www.researchgate.net/publication/408184695_Making_the_Case_for_An_Experiential_Approach_to_Test_Design_and_Validation}{Link to Slides}", "itc_2026.png"),
 ("Araneda, S. (2026, July 1). \\textit{Randomly parallel tests as a test security and measurement strategy: Theory, evidence, and practical implications} [Conference presentation]. International Test Commission Conference 2026, Auckland, New Zealand. \\link{https://www.researchgate.net/publication/408184705_Randomly_Parallel_Tests_as_a_Test_Security_and_Measurement_Strategy_Theory_Evidence_and_Practical_Implications}{Link to Slides}", "itc_2026.png"),
