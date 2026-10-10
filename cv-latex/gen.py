@@ -274,12 +274,16 @@ PUB_HEADER = r"""
 \newcommand{\statscolw}{\dimexpr\linewidth-1.3in-2.1in\relax}
 \begin{tabular}{@{}lll@{}}
 \hline\\[4pt]
-\cellL{1.3in}{\textbf{\color{cvink}ResearchGate}} & \cellL{2.1in}{Profile: \link{https://www.researchgate.net/profile/Sergio-Araneda?ev=hdr_xprf}{ResearchGate profile}} & \cellR{\statscolw}{\textbf{\color{cvink}Research Interest Score: 107.3}} \\[4pt]\hline\\[2pt]
-\cellL{1.3in}{\textbf{\color{cvink}Google Scholar}} & \cellL{2.1in}{Profile: \link{https://scholar.google.com/citations?user=_Q0VXwsAAAAJ}{Google Scholar profile}} & \cellR{\statscolw}{\textbf{\color{cvink}Number of Citations: 35}} \\[8pt]\hline
+\cellL{1.3in}{\textbf{\color{cvink}ResearchGate}} & \cellL{2.1in}{Profile: \link{https://www.researchgate.net/profile/Sergio-Araneda?ev=hdr_xprf}{ResearchGate profile}} & \cellR{\statscolw}{\textbf{\color{cvink}Research Interest Score: @RG@}} \\[4pt]\hline\\[2pt]
+\cellL{1.3in}{\textbf{\color{cvink}Google Scholar}} & \cellL{2.1in}{Profile: \link{https://scholar.google.com/citations?user=_Q0VXwsAAAAJ}{Google Scholar profile}} & \cellR{\statscolw}{\textbf{\color{cvink}Number of Citations: @GS@}} \\[8pt]\hline
 \end{tabular}
 
 \cvsubsection{Peer Reviewed Journals}
 """
+
+import json, os
+_STATS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "stats.json"), encoding="utf-8"))
+PUB_HEADER = PUB_HEADER.replace("@RG@", _STATS["researchgate_score"]).replace("@GS@", _STATS["scholar_citations"])
 
 def journals():
     out = ""
