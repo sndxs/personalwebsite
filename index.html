@@ -440,6 +440,48 @@
       .wrap { padding: 0 1.25rem; }
       nav { padding: 0 1.25rem; }
     }
+    /* ─── HERO PHOTO BACKGROUND ──────────────────────── */
+    .hero-slides, .hero-wash { position: absolute; inset: 0; }
+    .hero-slides { overflow: hidden; }
+    .hero-slide {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center 28%;
+      opacity: 0; transform: scale(1);
+      transition: opacity 1.8s ease, transform 0s linear 1.8s;
+    }
+    .hero-slide.active {
+      opacity: 1; transform: scale(1.09);
+      transition: opacity 1.8s ease, transform 9s linear;
+    }
+    .hero-wash {
+      pointer-events: none;
+      background: linear-gradient(90deg,
+        rgba(209,241,232,.95) 0%, rgba(209,241,232,.88) 40%,
+        rgba(209,241,232,.52) 75%, rgba(209,241,232,.38) 100%);
+    }
+    .hero-caption {
+      position: absolute; z-index: 2; right: 2rem; bottom: 1.5rem;
+      display: flex; align-items: center; gap: .9rem;
+      padding: .5rem .9rem; border-radius: 100px;
+      background: rgba(255,255,255,.82); border: 1px solid var(--border);
+      font-size: .74rem; font-weight: 600; letter-spacing: .04em; color: var(--white);
+      backdrop-filter: blur(4px);
+    }
+    .hero-dots { display: flex; gap: .4rem; }
+    .hero-dot {
+      width: 8px; height: 8px; padding: 0; border-radius: 50%; cursor: pointer;
+      border: 1px solid var(--gold); background: transparent; transition: background .2s;
+    }
+    .hero-dot.active { background: var(--gold); }
+    .hero-dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    @media (max-width: 820px) {
+      .hero-wash { background: rgba(209,241,232,.86); }
+      .hero-caption { right: 1rem; bottom: .9rem; font-size: .68rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-slide, .hero-slide.active { transform: none; transition: opacity .01s; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .hero-credential::after { animation: none; width: 100%; }
       .page.active { animation: none; }
@@ -488,6 +530,13 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-texture"></div>
+
+    <div class="hero-slides" aria-hidden="true">
+      <div class="hero-slide active" data-caption="AIME-Con 2026 · Pittsburgh" style="background-image:url('images/carousel/aimecon-2026.jpg')"></div>
+      <div class="hero-slide" data-caption="Conference on Test Security · Arizona" style="background-image:url('images/carousel/cots-arizona.jpg')"></div>
+      <div class="hero-slide" data-caption="ITC 2024 · Granada" style="background-image:url('images/carousel/itc-2024-granada.jpg')"></div>
+    </div>
+    <div class="hero-wash"></div>
     <div class="hero-glow"></div>
     <div class="hero-inner">
       <p class="eyebrow">Educational Measurement · Validity · Consulting</p>
@@ -503,6 +552,11 @@
         <button class="btn btn-ghost" onclick="show('research')">View Research</button>
         <a class="btn btn-ghost" href="cv-latex/output/Sergio%20Araneda%20CV%20%28LaTeX%29.pdf" target="_blank" rel="noopener">⬇ Download CV</a>
       </div>
+    </div>
+
+    <div class="hero-caption" aria-label="Conference photo background">
+      <span class="hero-caption-text">AIME-Con 2026 · Pittsburgh</span>
+      <div class="hero-dots"></div>
     </div>
   </section>
 
@@ -1960,6 +2014,42 @@
   function toggleNav() {
     document.getElementById('mobileNav').classList.toggle('open');
   }
+  // ── Hero photo background ──
+  (function () {
+    const slides = document.querySelectorAll('.hero-slide');
+    const label = document.querySelector('.hero-caption-text');
+    const dotsBox = document.querySelector('.hero-dots');
+    if (!slides.length || !label || !dotsBox) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0, timer = null;
+
+    const dots = Array.from(slides, (_, n) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'hero-dot';
+      b.setAttribute('aria-label', 'Show photo ' + (n + 1));
+      b.addEventListener('click', () => { go(n); restart(); });
+      dotsBox.appendChild(b);
+      return b;
+    });
+
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle('active', k === i));
+      dots.forEach((d, k) => d.classList.toggle('active', k === i));
+      label.textContent = slides[i].dataset.caption;
+    }
+    function homeVisible() {
+      const home = document.getElementById('p-home');
+      return !document.hidden && home && home.classList.contains('active');
+    }
+    function start() {
+      if (reduce || timer) return;
+      timer = setInterval(() => { if (homeVisible()) go(i + 1); }, 6500);
+    }
+    function restart() { clearInterval(timer); timer = null; start(); }
+
+    go(0); start();
+  })();
 </script>
 
 <!-- ═══════════ CONTACT MODAL ═══════════ -->
